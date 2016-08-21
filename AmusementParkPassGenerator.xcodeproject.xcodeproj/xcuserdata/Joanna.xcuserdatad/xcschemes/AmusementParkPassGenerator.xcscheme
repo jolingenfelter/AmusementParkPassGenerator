@@ -17,7 +17,7 @@
                BlueprintIdentifier = "9E950B2E1D6357BE001A3C3E"
                BuildableName = "AmusementParkPassGenerator.app"
                BlueprintName = "AmusementParkPassGenerator"
-               ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproj">
+               ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproject.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "9E950B2E1D6357BE001A3C3E"
             BuildableName = "AmusementParkPassGenerator.app"
             BlueprintName = "AmusementParkPassGenerator"
-            ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproj">
+            ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproject.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "9E950B2E1D6357BE001A3C3E"
             BuildableName = "AmusementParkPassGenerator.app"
             BlueprintName = "AmusementParkPassGenerator"
-            ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproj">
+            ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproject.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "9E950B2E1D6357BE001A3C3E"
             BuildableName = "AmusementParkPassGenerator.app"
             BlueprintName = "AmusementParkPassGenerator"
-            ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproj">
+            ReferencedContainer = "container:AmusementParkPassGenerator.xcodeproject.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

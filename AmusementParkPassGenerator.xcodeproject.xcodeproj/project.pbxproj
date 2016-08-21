@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E014B3C1D64C68B000ED26B /* PassGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E014B3B1D64C68B000ED26B /* PassGenerator.swift */; };
+		9E01F2621D66450A000F1F3B /* AccessDenied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9E01F2601D66450A000F1F3B /* AccessDenied.wav */; };
+		9E01F2631D66450A000F1F3B /* AccessGranted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9E01F2611D66450A000F1F3B /* AccessGranted.wav */; };
+		9E04F3311D68F60000C2F241 /* AgeAndBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E04F3301D68F60000C2F241 /* AgeAndBirthday.swift */; };
 		9E950B331D6357BE001A3C3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E950B321D6357BE001A3C3E /* AppDelegate.swift */; };
 		9E950B351D6357BE001A3C3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E950B341D6357BE001A3C3E /* ViewController.swift */; };
 		9E950B381D6357BE001A3C3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E950B361D6357BE001A3C3E /* Main.storyboard */; };
 		9E950B3A1D6357BE001A3C3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E950B391D6357BE001A3C3E /* Assets.xcassets */; };
 		9E950B3D1D6357BE001A3C3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E950B3B1D6357BE001A3C3E /* LaunchScreen.storyboard */; };
+		9E950B7F1D6363C4001A3C3E /* EntrantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E950B7E1D6363C4001A3C3E /* EntrantModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E014B3B1D64C68B000ED26B /* PassGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassGenerator.swift; sourceTree = "<group>"; };
+		9E01F2601D66450A000F1F3B /* AccessDenied.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessDenied.wav; sourceTree = "<group>"; };
+		9E01F2611D66450A000F1F3B /* AccessGranted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessGranted.wav; sourceTree = "<group>"; };
+		9E04F3301D68F60000C2F241 /* AgeAndBirthday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeAndBirthday.swift; sourceTree = "<group>"; };
 		9E950B2F1D6357BE001A3C3E /* AmusementParkPassGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmusementParkPassGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E950B321D6357BE001A3C3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E950B341D6357BE001A3C3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +31,7 @@
 		9E950B391D6357BE001A3C3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E950B3C1D6357BE001A3C3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E950B3E1D6357BE001A3C3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E950B7E1D6363C4001A3C3E /* EntrantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrantModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +66,15 @@
 			children = (
 				9E950B321D6357BE001A3C3E /* AppDelegate.swift */,
 				9E950B341D6357BE001A3C3E /* ViewController.swift */,
+				9E04F3301D68F60000C2F241 /* AgeAndBirthday.swift */,
+				9E950B7E1D6363C4001A3C3E /* EntrantModel.swift */,
+				9E014B3B1D64C68B000ED26B /* PassGenerator.swift */,
 				9E950B361D6357BE001A3C3E /* Main.storyboard */,
 				9E950B391D6357BE001A3C3E /* Assets.xcassets */,
 				9E950B3B1D6357BE001A3C3E /* LaunchScreen.storyboard */,
 				9E950B3E1D6357BE001A3C3E /* Info.plist */,
+				9E01F2601D66450A000F1F3B /* AccessDenied.wav */,
+				9E01F2611D66450A000F1F3B /* AccessGranted.wav */,
 			);
 			path = AmusementParkPassGenerator;
 			sourceTree = "<group>";
@@ -99,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9E950B2A1D6357BE001A3C3E /* Build configuration list for PBXProject "AmusementParkPassGenerator" */;
+			buildConfigurationList = 9E950B2A1D6357BE001A3C3E /* Build configuration list for PBXProject "AmusementParkPassGenerator.xcodeproject" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -123,8 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E950B3D1D6357BE001A3C3E /* LaunchScreen.storyboard in Resources */,
+				9E01F2631D66450A000F1F3B /* AccessGranted.wav in Resources */,
 				9E950B3A1D6357BE001A3C3E /* Assets.xcassets in Resources */,
 				9E950B381D6357BE001A3C3E /* Main.storyboard in Resources */,
+				9E01F2621D66450A000F1F3B /* AccessDenied.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E04F3311D68F60000C2F241 /* AgeAndBirthday.swift in Sources */,
+				9E014B3C1D64C68B000ED26B /* PassGenerator.swift in Sources */,
 				9E950B351D6357BE001A3C3E /* ViewController.swift in Sources */,
 				9E950B331D6357BE001A3C3E /* AppDelegate.swift in Sources */,
+				9E950B7F1D6363C4001A3C3E /* EntrantModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +290,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9E950B2A1D6357BE001A3C3E /* Build configuration list for PBXProject "AmusementParkPassGenerator" */ = {
+		9E950B2A1D6357BE001A3C3E /* Build configuration list for PBXProject "AmusementParkPassGenerator.xcodeproject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E950B3F1D6357BE001A3C3E /* Debug */,
@@ -286,6 +306,7 @@
 				9E950B431D6357BE001A3C3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
