@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Methods to check age and birthday
+
 var dateFormatter: NSDateFormatter {
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "MM/dd/yyyy"

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Generates a pass for a guest or employee
 
 class PassGenerator {
     var entrant: Person

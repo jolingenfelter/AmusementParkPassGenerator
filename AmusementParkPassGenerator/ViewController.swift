@@ -65,6 +65,7 @@ class ViewController: UIViewController {
         managerPass.printData()
         */
         
+        // Check one area to see if access is correct for EntrantType
         func swipePassAtOfficeArea(pass: PassGenerator) {
             switch pass.entrantType {
             case is GuestType:
