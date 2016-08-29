@@ -113,6 +113,8 @@ enum GuestType: Entrant {
     case Classic
     case VIP
     case freeChild
+    case seasonPass
+    case seniorGuest
     
     func areaAccess() -> AreaAccessType {
         return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: false, officeAreas: false)
@@ -120,8 +122,10 @@ enum GuestType: Entrant {
     
     func discountAccess() -> DiscountAccessType {
         switch self {
-        case .VIP:
+        case .VIP, .seasonPass:
             return DiscountAccessType(foodDiscount: 0.10, merchandiseDiscount: 0.20)
+        case .seniorGuest:
+            return DiscountAccessType(foodDiscount: 0.10, merchandiseDiscount: 0.10)
         default:
             return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }
@@ -129,7 +133,7 @@ enum GuestType: Entrant {
     
     func rideAccess() -> RideAccessType {
         switch self {
-        case .VIP:
+        case .VIP, .seasonPass, .seniorGuest:
             return RideAccessType(allRides: true, skipLines: true)
         default:
             return RideAccessType(allRides: true, skipLines: false)

@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         
         
         // Classic guest tries to enter as child
-        
+        /*
         let classicGuest = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: "8/20/1990")
         let classicGuestPass = PassGenerator(entrant: classicGuest, entrantType: GuestType.freeChild)
 
@@ -35,6 +35,19 @@ class ViewController: UIViewController {
         }
         
         classicGuestPass.printData()
+         */
+        
+        // Senior guest
+        let seniorGuest = Person(firstName: "Billy", lastName: "Bob", address: "an Adress", city: "City", state: "State", zipCode: 1236548, SSN: nil, DOB: "12/27/1900")
+        let seniorGuestPass = PassGenerator(entrant: seniorGuest, entrantType: GuestType.seniorGuest)
+        
+        do {
+            try seniorGuestPass.checkForCorrectData()
+        } catch {
+            
+        }
+        
+        seniorGuestPass.printData()
  
         
         // Kitchen Employee with birthday
@@ -83,7 +96,8 @@ class ViewController: UIViewController {
         }
         
         //swipePassAtOfficeArea(managerPass)
-        swipePassAtOfficeArea(classicGuestPass)
+        //swipePassAtOfficeArea(classicGuestPass)
+        swipePassAtOfficeArea(seniorGuestPass)
  
  
 

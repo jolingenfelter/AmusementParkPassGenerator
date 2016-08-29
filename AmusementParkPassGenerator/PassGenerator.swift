@@ -33,10 +33,32 @@ class PassGenerator {
                 self.entrantType = GuestType.Classic
             }
         
+        case GuestType.seniorGuest:
+            guard self.entrant.firstName != nil else {
+                print(PersonalInformationError.InvalidName.rawValue)
+                throw PersonalInformationError.InvalidName
+            }
+            
+            guard self.entrant.lastName != nil else {
+                print(PersonalInformationError.InvalidName.rawValue)
+                throw(PersonalInformationError.InvalidName)
+            }
+            
+            guard self.entrant.DOB != nil else {
+                print(PersonalInformationError.InvalidDOB.rawValue)
+                throw PersonalInformationError.InvalidDOB
+            }
+            
+            let entrantAge = calculateAge(self.entrant)
+            
+            if entrantAge < 65 {
+                self.entrantType = GuestType.Classic
+            }
+        
         case GuestType.Classic, GuestType.VIP:
             print("No information necessary")
         
-        case is EmployeeType:
+        case is EmployeeType, GuestType.seasonPass:
             guard self.entrant.firstName != nil else {
                 print(PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidName
