@@ -51,6 +51,8 @@ enum PersonalInformationError: String, ErrorType {
     case InvalidSSN = "No valid social security number provided"
     case InvalidDOB = "Invalid date of birth"
     case InvalidEntrantType = "Invalid Entrant Type"
+    case InvalidDateOfVisit = "Invalid visit date"
+    case InvalidCompany = "Invalid Company"
 }
 
 protocol PersonalInformation {
@@ -62,6 +64,8 @@ protocol PersonalInformation {
     var zipCode: Int? { get }
     var SSN: Int? { get }
     var DOB: String? { get }
+    var dateOfVisit: String? { get }
+    var associatedCompany: VendorType? { get }
 }
 
 enum EmployeeType: Entrant {
@@ -97,6 +101,68 @@ enum EmployeeType: Entrant {
     }
 }
 
+enum VendorType: Entrant {
+    
+    case ACME
+    case Orkin
+    case Fedex
+    case NWElectrical
+    
+    func areaAccess() -> AreaAccessType {
+        switch self {
+        case .ACME:
+            return AreaAccessType(amusementArea: false, kitchenAreas: true, rideControlAreas: false, maintenanceAreas: false, officeAreas: false)
+        case .Orkin:
+            return AreaAccessType(amusementArea: true, kitchenAreas: true, rideControlAreas: true, maintenanceAreas: false, officeAreas: false)
+        case .Fedex:
+            return AreaAccessType(amusementArea: false, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: true, officeAreas: true)
+        case .NWElectrical:
+            return AreaAccessType(amusementArea: true, kitchenAreas: true, rideControlAreas: true, maintenanceAreas: true, officeAreas: true)
+            }
+    }
+    
+    func discountAccess() -> DiscountAccessType {
+        return DiscountAccessType(foodDiscount: nil, merchandiseDiscount: nil)
+    }
+    
+    func rideAccess() -> RideAccessType {
+        return RideAccessType(allRides: false, skipLines: false)
+    }
+    
+}
+
+enum ContractEmployeeType: Int, Entrant {
+    
+    case A = 1001
+    case B = 1002
+    case C = 1003
+    case D = 2001
+    case E = 2002
+    
+    func areaAccess() -> AreaAccessType {
+        switch self {
+        case A:
+            return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: true, maintenanceAreas: false, officeAreas: false)
+        case B:
+            return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: true, maintenanceAreas: true, officeAreas: false)
+        case C:
+            return AreaAccessType(amusementArea: true, kitchenAreas: true, rideControlAreas: true, maintenanceAreas: true, officeAreas: true)
+        case D:
+            return AreaAccessType(amusementArea: false, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: false, officeAreas: true)
+        case E:
+            return AreaAccessType(amusementArea: false, kitchenAreas: true, rideControlAreas: false, maintenanceAreas: true, officeAreas: false)
+        }
+    }
+    
+    func discountAccess() -> DiscountAccessType {
+        return DiscountAccessType(foodDiscount: nil, merchandiseDiscount: nil)
+    }
+    
+    func rideAccess() -> RideAccessType {
+        return RideAccessType(allRides: false, skipLines: false)
+    }
+}
+
 struct Person: PersonalInformation {
     var firstName: String?
     var lastName: String?
@@ -106,6 +172,8 @@ struct Person: PersonalInformation {
     var zipCode: Int?
     var SSN: Int?
     var DOB: String?
+    var dateOfVisit: String?
+    var associatedCompany: VendorType?
     
 }
 
@@ -113,6 +181,8 @@ enum GuestType: Entrant {
     case Classic
     case VIP
     case freeChild
+    case seasonPass
+    case seniorGuest
     
     func areaAccess() -> AreaAccessType {
         return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: false, officeAreas: false)
@@ -120,8 +190,10 @@ enum GuestType: Entrant {
     
     func discountAccess() -> DiscountAccessType {
         switch self {
-        case .VIP:
+        case .VIP, .seasonPass:
             return DiscountAccessType(foodDiscount: 0.10, merchandiseDiscount: 0.20)
+        case .seniorGuest:
+            return DiscountAccessType(foodDiscount: 0.10, merchandiseDiscount: 0.10)
         default:
             return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }
@@ -129,7 +201,7 @@ enum GuestType: Entrant {
     
     func rideAccess() -> RideAccessType {
         switch self {
-        case .VIP:
+        case .VIP, .seasonPass, .seniorGuest:
             return RideAccessType(allRides: true, skipLines: true)
         default:
             return RideAccessType(allRides: true, skipLines: false)
