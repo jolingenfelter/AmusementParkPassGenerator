@@ -38,7 +38,8 @@ class ViewController: UIViewController {
          */
         
         // Senior guest
-        let seniorGuest = Person(firstName: "Billy", lastName: "Bob", address: "an Adress", city: "City", state: "State", zipCode: 1236548, SSN: nil, DOB: "12/27/1900")
+        /*
+        let seniorGuest = Person(firstName: "Billy", lastName: "Bob", address: "an Adress", city: "City", state: "State", zipCode: 1236548, SSN: nil, DOB: "12/27/1900", dateOfVisit: nil, associatedCompany: nil)
         let seniorGuestPass = PassGenerator(entrant: seniorGuest, entrantType: GuestType.seniorGuest)
         
         do {
@@ -48,7 +49,21 @@ class ViewController: UIViewController {
         }
         
         seniorGuestPass.printData()
+        */
+        
+        // Vendor
+        
+        let vendor = Person(firstName: "Henry", lastName: "Button", address: "1234 Somewhere St.", city: "City", state: "State", zipCode: 1234567, SSN: 1234567, DOB: "12/31/1988", dateOfVisit: "8/30/2016", associatedCompany: .Fedex)
+        
+        let vendorPass = PassGenerator(entrant: vendor, entrantType: vendor.associatedCompany!)
  
+        do {
+            try vendorPass.checkForCorrectData()
+        } catch {
+            
+        }
+        
+        vendorPass.printData()
         
         // Kitchen Employee with birthday
      
@@ -97,7 +112,7 @@ class ViewController: UIViewController {
         
         //swipePassAtOfficeArea(managerPass)
         //swipePassAtOfficeArea(classicGuestPass)
-        swipePassAtOfficeArea(seniorGuestPass)
+        //swipePassAtOfficeArea(seniorGuestPass)
  
  
 

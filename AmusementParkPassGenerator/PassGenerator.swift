@@ -58,7 +58,7 @@ class PassGenerator {
         case GuestType.Classic, GuestType.VIP:
             print("No information necessary")
         
-        case is EmployeeType, GuestType.seasonPass:
+        case is EmployeeType, is ContractEmployeeType, GuestType.seasonPass:
             guard self.entrant.firstName != nil else {
                 print(PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidName
@@ -82,6 +82,27 @@ class PassGenerator {
             guard self.entrant.zipCode != nil else {
                 (PersonalInformationError.InvalidZipCode.rawValue)
                 throw PersonalInformationError.InvalidZipCode
+            }
+        
+        case is VendorType:
+            guard self.entrant.firstName != nil else {
+                print(PersonalInformationError.InvalidName.rawValue)
+                throw PersonalInformationError.InvalidName
+            }
+            
+            guard self.entrant.lastName != nil else {
+                print(PersonalInformationError.InvalidName.rawValue)
+                throw PersonalInformationError.InvalidName
+            }
+            
+            guard self.entrant.associatedCompany != nil else {
+                print(PersonalInformationError.InvalidCompany.rawValue)
+                throw PersonalInformationError.InvalidCompany
+            }
+            
+            guard self.entrant.dateOfVisit != nil else {
+                print(PersonalInformationError.InvalidDateOfVisit.rawValue)
+                throw PersonalInformationError.InvalidDateOfVisit
             }
             
         default: break
