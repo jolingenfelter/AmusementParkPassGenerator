@@ -45,6 +45,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
+    // Instance of Person created from input data
+    
+    var person = Person()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +60,18 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Helper Methods
+    
+    func displayAlertWithTitle(title: String, andMessage message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alert.addAction(okAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     //Sound Effects
