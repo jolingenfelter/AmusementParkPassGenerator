@@ -46,9 +46,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var zipCodeTextField: UITextField!
     
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAccessDeniedSound()
