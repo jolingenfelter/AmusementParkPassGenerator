@@ -408,6 +408,28 @@
                             <constraint firstItem="jbY-ul-dhj" firstAttribute="top" secondItem="NmK-qP-Bch" secondAttribute="bottom" priority="250" constant="20" id="znf-fo-CJd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="DOBTextField" destination="frO-40-R3c" id="Np4-ph-rpI"/>
+                        <outlet property="SSNTextField" destination="C9G-UR-L6r" id="B3q-gm-kfM"/>
+                        <outlet property="cityTextField" destination="Wul-cz-zPc" id="0ml-HC-HnS"/>
+                        <outlet property="companyTextField" destination="Epe-Gi-LKd" id="pd0-pc-DQB"/>
+                        <outlet property="contractorButton" destination="xUl-LF-N2u" id="gk7-Ai-yM0"/>
+                        <outlet property="employeeButton" destination="I1x-rj-O6i" id="Ebl-4i-wbS"/>
+                        <outlet property="firstNameTextField" destination="IJ4-2G-bNa" id="J1u-aO-FvM"/>
+                        <outlet property="generatePassButton" destination="qtA-4K-UwL" id="cyS-Zf-5XZ"/>
+                        <outlet property="guestButton" destination="8PP-k5-jts" id="aTp-rI-qNx"/>
+                        <outlet property="lastNameTextField" destination="zAN-RZ-exo" id="1ZU-gr-Jel"/>
+                        <outlet property="populateDataButton" destination="sOk-Sx-ich" id="Kow-2Q-gH8"/>
+                        <outlet property="projectNumberTextField" destination="KFt-x9-Rs6" id="FCP-Mz-YRn"/>
+                        <outlet property="r2b1" destination="mts-CL-b3c" id="MMn-ck-Xt3"/>
+                        <outlet property="r2b2" destination="07Y-uV-W34" id="tLV-RC-x7W"/>
+                        <outlet property="r2b3" destination="NmK-qP-Bch" id="iTG-hh-D0u"/>
+                        <outlet property="r2b4" destination="iL1-03-7wn" id="fWj-Mn-Og7"/>
+                        <outlet property="stateTextField" destination="3Vr-yQ-bQq" id="Lzx-Qx-JGi"/>
+                        <outlet property="streetAddressTextField" destination="PZ3-Vr-3qz" id="ait-AT-hu8"/>
+                        <outlet property="vendorButton" destination="5P6-vG-vzH" id="2s5-r5-9Sg"/>
+                        <outlet property="zipCodeTextField" destination="OPF-aj-LpQ" id="wHc-xc-hBW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

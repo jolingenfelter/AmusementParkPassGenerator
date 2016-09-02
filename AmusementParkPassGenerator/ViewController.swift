@@ -14,107 +14,45 @@ class ViewController: UIViewController {
     var accessGrantedSound: SystemSoundID = 0
     var accessDeniedSound: SystemSoundID = 0
     
+    // Buttons
+    
+    @IBOutlet weak var guestButton: UIButton!
+    @IBOutlet weak var employeeButton: UIButton!
+    @IBOutlet weak var contractorButton: UIButton!
+    @IBOutlet weak var vendorButton: UIButton!
+    
+    // 2nd row Buttons
+    @IBOutlet weak var r2b1: UIButton!
+    @IBOutlet weak var r2b2: UIButton!
+    @IBOutlet weak var r2b3: UIButton!
+    @IBOutlet weak var r2b4: UIButton!
+    
+    @IBOutlet weak var generatePassButton: UIButton!
+    @IBOutlet weak var populateDataButton: UIButton!
+    
+    // TextFields
+    @IBOutlet weak var DOBTextField: UITextField!
+    @IBOutlet weak var SSNTextField: UITextField!
+    @IBOutlet weak var projectNumberTextField: UITextField!
+    
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    
+    @IBOutlet weak var companyTextField: UITextField!
+    
+    @IBOutlet weak var streetAddressTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var stateTextField: UITextField!
+    @IBOutlet weak var zipCodeTextField: UITextField!
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAccessDeniedSound()
         loadAccessGrantedSound()
-        
-        
-        //Create filler data
-        
-        
-        // Classic guest tries to enter as child
-        /*
-        let classicGuest = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: "8/20/1990")
-        let classicGuestPass = PassGenerator(entrant: classicGuest, entrantType: GuestType.freeChild)
-
-        do {
-            try classicGuestPass.checkForCorrectData()
-        } catch {
-            
-        }
-        
-        classicGuestPass.printData()
-         */
-        
-        // Senior guest
-        /*
-        let seniorGuest = Person(firstName: "Billy", lastName: "Bob", address: "an Adress", city: "City", state: "State", zipCode: 1236548, SSN: nil, DOB: "12/27/1900", dateOfVisit: nil, associatedCompany: nil)
-        let seniorGuestPass = PassGenerator(entrant: seniorGuest, entrantType: GuestType.seniorGuest)
-        
-        do {
-            try seniorGuestPass.checkForCorrectData()
-        } catch {
-            
-        }
-        
-        seniorGuestPass.printData()
-        */
-        
-        // Vendor
-        
-        let vendor = Person(firstName: "Henry", lastName: "Button", address: "1234 Somewhere St.", city: "City", state: "State", zipCode: 1234567, SSN: 1234567, DOB: "12/31/1988", dateOfVisit: "8/30/2016", associatedCompany: .Fedex)
-        
-        let vendorPass = PassGenerator(entrant: vendor, entrantType: vendor.associatedCompany!)
- 
-        do {
-            try vendorPass.checkForCorrectData()
-        } catch {
-            
-        }
-        
-        vendorPass.printData()
-        
-        // Kitchen Employee with birthday
-     
-        /*
-        let kitchenEmployee = Person(firstName: "Jane", lastName: "Doe", address: "123 Apple St.", city: "Somewhere", state: "State", zipCode: 123456, SSN: nil, DOB: "08/21/1988")
-        let kitchenEmplyeePass = PassGenerator(entrant: kitchenEmployee, entrantType: EmployeeType.FoodServices)
-        
-        do {
-            try kitchenEmplyeePass.checkForCorrectData()
-        } catch {
-            
-        }
-        
-        kitchenEmplyeePass.printData()
-       */
-        
-        /*
-        let manager = Person(firstName: "Billy", lastName: "Bob", address: "135 6th Street", city: "City", state: "State", zipCode: 1234567, SSN: 1234556, DOB: "11/13/1978")
-        let managerPass = PassGenerator(entrant: manager, entrantType: EmployeeType.Manager)
-        
-        do {
-            try managerPass.checkForCorrectData()
-        } catch {
-            
-        }
-        
-        managerPass.printData()
-        */
-        
-        // Check one area to see if access is correct for EntrantType
-        func swipePassAtOfficeArea(pass: PassGenerator) {
-            switch pass.entrantType {
-            case is GuestType:
-                playAccessDeniedSound()
-                print("Access denied")
-            case EmployeeType.FoodServices, EmployeeType.Maintenance, EmployeeType.RideServices:
-                playAccessDeniedSound()
-                print("Access denied")
-            case EmployeeType.Manager:
-                playAccessGrantedSound()
-                print("Access granted")
-            default:
-                break
-            }
-        }
-        
-        //swipePassAtOfficeArea(managerPass)
-        //swipePassAtOfficeArea(classicGuestPass)
-        //swipePassAtOfficeArea(seniorGuestPass)
- 
- 
 
     }
 
