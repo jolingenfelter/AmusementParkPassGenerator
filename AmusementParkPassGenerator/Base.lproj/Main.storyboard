@@ -21,38 +21,50 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4Hn-mI-vyA" userLabel="FirstRowButtons">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-k5-jts">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-k5-jts">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
-                                        <color key="backgroundColor" red="0.50723803040000004" green="0.38373541830000002" blue="0.64449506999999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.59101072223230777" green="0.4481405979283119" blue="0.76244378794871781" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Guest">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantTypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9hC-Ej-bmR"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1x-rj-O6i">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1x-rj-O6i">
                                         <rect key="frame" x="150" y="0.0" width="150" height="80"/>
                                         <color key="backgroundColor" red="0.50723803040000004" green="0.38373541830000002" blue="0.64449506999999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Employee">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantTypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A5g-RO-HxU"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUl-LF-N2u">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUl-LF-N2u">
                                         <rect key="frame" x="300" y="0.0" width="150" height="80"/>
                                         <color key="backgroundColor" red="0.50723803040000004" green="0.38373541830000002" blue="0.64449506999999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Contractor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantTypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tqI-tQ-S1b"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5P6-vG-vzH">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5P6-vG-vzH">
                                         <rect key="frame" x="450" y="0.0" width="150" height="80"/>
                                         <color key="backgroundColor" red="0.50723803040000004" green="0.38373541830000002" blue="0.64449506999999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Vendor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantTypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TWr-dc-KZg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="13p-sP-qBS"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="qL5-ph-PYl"/>
+                                    <constraint firstAttribute="height" constant="80" id="qL5-ph-PYl"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5eE-Im-Y0t" userLabel="SecondRowButtons">
@@ -64,6 +76,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantSubtypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cRK-di-ney"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07Y-uV-W34">
                                         <rect key="frame" x="150" y="0.0" width="150" height="40"/>
@@ -71,6 +86,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantSubtypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5vT-tK-zff"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmK-qP-Bch">
                                         <rect key="frame" x="300" y="0.0" width="150" height="40"/>
@@ -78,6 +96,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantSubtypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rzk-a4-Nc7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iL1-03-7wn">
                                         <rect key="frame" x="450" y="0.0" width="150" height="40"/>
@@ -85,12 +106,20 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="entrantSubtypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJ6-aF-aY3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="0GO-dY-pjx"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="GmN-sQ-Gpj"/>
+                                    <constraint firstAttribute="height" constant="40" id="GmN-sQ-Gpj"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0GO-dY-pjx"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jbY-ul-dhj" userLabel="FirstRowInfo">
                                 <rect key="frame" x="20" y="140" width="560" height="50"/>
@@ -430,7 +459,6 @@
                             <constraint firstItem="5eE-Im-Y0t" firstAttribute="top" secondItem="4Hn-mI-vyA" secondAttribute="bottom" id="r4v-c0-ZT7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KJt-vA-pSm" secondAttribute="trailing" id="sL9-MJ-Maj"/>
                             <constraint firstItem="TFT-L0-1o4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="soE-YW-Rba"/>
-                            <constraint firstItem="jbY-ul-dhj" firstAttribute="top" relation="lessThanOrEqual" secondItem="5eE-Im-Y0t" secondAttribute="bottom" constant="60" id="vV1-AW-tR2"/>
                             <constraint firstItem="gpG-jd-o9w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yjR-r7-xx1"/>
                             <constraint firstItem="KbQ-xZ-8v7" firstAttribute="top" relation="lessThanOrEqual" secondItem="9ya-3u-Unm" secondAttribute="bottom" constant="80" id="yyG-bE-VI3"/>
                         </constraints>
@@ -452,6 +480,7 @@
                         <outlet property="r2b2" destination="07Y-uV-W34" id="tLV-RC-x7W"/>
                         <outlet property="r2b3" destination="NmK-qP-Bch" id="iTG-hh-D0u"/>
                         <outlet property="r2b4" destination="iL1-03-7wn" id="fWj-Mn-Og7"/>
+                        <outlet property="secondRowButtonsStackView" destination="5eE-Im-Y0t" id="TMg-9i-ccM"/>
                         <outlet property="stateTextField" destination="3Vr-yQ-bQq" id="Lzx-Qx-JGi"/>
                         <outlet property="streetAddressTextField" destination="PZ3-Vr-3qz" id="ait-AT-hu8"/>
                         <outlet property="vendorButton" destination="5P6-vG-vzH" id="2s5-r5-9Sg"/>
