@@ -68,11 +68,11 @@ protocol PersonalInformation {
     var associatedCompany: VendorType? { get }
 }
 
-enum EmployeeType: Entrant {
-    case FoodServices
-    case RideServices
-    case Maintenance
-    case Manager
+enum EmployeeType: String, Entrant {
+    case FoodServices = "Food Services"
+    case RideServices = "Ride Services"
+    case Maintenance = "Maintenance"
+    case Manager = "Manager"
     
     func areaAccess() -> AreaAccessType {
         switch self {
@@ -101,12 +101,12 @@ enum EmployeeType: Entrant {
     }
 }
 
-enum VendorType: Entrant {
+enum VendorType: String, Entrant {
     
-    case ACME
-    case Orkin
-    case Fedex
-    case NWElectrical
+    case ACME = "ACME"
+    case Orkin = "Orkin"
+    case Fedex = "Fedex"
+    case NWElectrical = "NW Electrical"
     
     func areaAccess() -> AreaAccessType {
         switch self {
@@ -177,12 +177,12 @@ struct Person: PersonalInformation {
     
 }
 
-enum GuestType: Entrant {
-    case Classic
-    case VIP
-    case freeChild
-    case seasonPass
-    case seniorGuest
+enum GuestType: String, Entrant {
+    case Classic = "Classic"
+    case VIP = "VIP"
+    case freeChild = "Child"
+    case seasonPass = "Season Pass"
+    case seniorGuest = "Senior"
     
     func areaAccess() -> AreaAccessType {
         return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: false, officeAreas: false)
