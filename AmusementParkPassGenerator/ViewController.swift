@@ -375,45 +375,89 @@ class ViewController: UIViewController {
         let today = dateFormatter.stringFromDate(NSDate())
         
         if currentlySelectedTypeButton == guestButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!)!, SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
            let entrantType = GuestType(rawValue: currentlySelectedSubType.titleLabel!.text!)!
             pass = PassGenerator(entrant: entrant, entrantType: entrantType)
             
-            do {
-                try pass.checkForCorrectData()
-                pass.printData()
-            } catch let error {
-                displayAlertWithTitle("Error", andMessage: "\(error)")
-            }
+            tryPass(pass)
             
         }
         
         
-        if currentlySelectedSubType == employeeButton {
+        if currentlySelectedTypeButton == employeeButton {
             entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
             let entrantType = EmployeeType(rawValue: currentlySelectedSubType.titleLabel!.text!)!
             pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+            
+            tryPass(pass)
 
         }
         
         if currentlySelectedTypeButton == vendorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!)!, SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
             let entrantType = VendorType(rawValue: companyTextField.text!)!
             pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+            
+            tryPass(pass)
 
         }
         
         if currentlySelectedTypeButton == contractorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!)!, SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
             let entrantType = ContractEmployeeType(rawValue: Int(projectNumberTextField.text!)!)!
             pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+            
+            tryPass(pass)
           
         }
         
+    }
+    
+    // try pass
+    
+    func tryPass(pass: PassGenerator) {
+        
+        do {
+            
+            try pass.checkForCorrectData()
+            pass.printData()
+            displayPassVC()
+            
+        } catch PersonalInformationError.InvalidDOB {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidDOB.rawValue)
+        } catch PersonalInformationError.InvalidSSN {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidSSN.rawValue)
+        } catch PersonalInformationError.InvalidName {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidName.rawValue)
+        } catch PersonalInformationError.InvalidAddress {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidAddress.rawValue)
+        } catch PersonalInformationError.InvalidCity {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidCity.rawValue)
+        } catch PersonalInformationError.InvalidState {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidCity.rawValue)
+        } catch PersonalInformationError.InvalidZipCode{
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidZipCode.rawValue)
+        } catch PersonalInformationError.InvalidDateOfVisit {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidDateOfVisit.rawValue)
+        } catch PersonalInformationError.InvalidCompany {
+            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidCompany.rawValue)
+        } catch let error {
+            displayAlertWithTitle("Error", andMessage: "\(error)")
+        }
+        
+            
+
+    }
+    
+    // Pass Generated VC
+    
+    func displayPassVC() {
+        let passVC = self.storyboard?.instantiateViewControllerWithIdentifier("PassViewController") as! PassViewController
+        self.presentViewController(passVC, animated: true, completion: nil)
     }
     
     // Helper Methods

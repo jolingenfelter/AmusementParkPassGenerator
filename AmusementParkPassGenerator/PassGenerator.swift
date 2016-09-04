@@ -73,14 +73,6 @@ class PassGenerator {
             guard self.entrant.zipCode != nil else {
                 throw PersonalInformationError.InvalidZipCode
             }
-            
-            guard self.entrant.zipCode == Int() else {
-                throw PersonalInformationError.InvalidZipCode
-            }
-            
-            guard self.entrant.SSN == Int() else {
-                throw PersonalInformationError.InvalidSSN
-            }
         
         case is VendorType:
             guard self.entrant.firstName != nil else {
