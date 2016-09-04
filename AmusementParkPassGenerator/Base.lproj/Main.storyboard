@@ -71,7 +71,7 @@
                                 <rect key="frame" x="0.0" y="80" width="600" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mts-CL-b3c">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.27768442030000001" green="0.25273916130000001" blue="0.363691926" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -81,7 +81,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07Y-uV-W34">
-                                        <rect key="frame" x="150" y="0.0" width="150" height="40"/>
+                                        <rect key="frame" x="120" y="0.0" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.27768442030000001" green="0.25273916130000001" blue="0.363691926" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -91,7 +91,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmK-qP-Bch">
-                                        <rect key="frame" x="300" y="0.0" width="150" height="40"/>
+                                        <rect key="frame" x="240" y="0.0" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.27768442030000001" green="0.25273916130000001" blue="0.363691926" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -101,13 +101,23 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iL1-03-7wn">
-                                        <rect key="frame" x="450" y="0.0" width="150" height="40"/>
+                                        <rect key="frame" x="360" y="0.0" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.27768442030000001" green="0.25273916130000001" blue="0.363691926" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="entrantSubtypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJ6-aF-aY3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppm-1a-uEt">
+                                        <rect key="frame" x="480" y="0.0" width="120" height="40"/>
+                                        <color key="backgroundColor" red="0.27768442030000001" green="0.25273916130000001" blue="0.363691926" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="entrantSubtypeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uKx-rV-OWx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -480,6 +490,7 @@
                         <outlet property="r2b2" destination="07Y-uV-W34" id="tLV-RC-x7W"/>
                         <outlet property="r2b3" destination="NmK-qP-Bch" id="iTG-hh-D0u"/>
                         <outlet property="r2b4" destination="iL1-03-7wn" id="fWj-Mn-Og7"/>
+                        <outlet property="r2b5" destination="Ppm-1a-uEt" id="i2h-au-n0w"/>
                         <outlet property="secondRowButtonsStackView" destination="5eE-Im-Y0t" id="TMg-9i-ccM"/>
                         <outlet property="stateTextField" destination="3Vr-yQ-bQq" id="Lzx-Qx-JGi"/>
                         <outlet property="streetAddressTextField" destination="PZ3-Vr-3qz" id="ait-AT-hu8"/>
