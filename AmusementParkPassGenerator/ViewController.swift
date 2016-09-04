@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import GameKit
 
 class ViewController: UIViewController {
     
@@ -121,12 +122,14 @@ class ViewController: UIViewController {
             setSecondRowButtons(guestButton)
             enableTextFields(false)
             deselectSubtype()
+            resetTextFields()
     
         case 2:
             switchHighlight(employeeButton)
             setSecondRowButtons(employeeButton)
             enableTextFields(false)
             deselectSubtype()
+            resetTextFields()
         
         case 3:
             switchHighlight(contractorButton)
@@ -136,6 +139,7 @@ class ViewController: UIViewController {
             companyTextField.backgroundColor = UIColor.clearColor()
             SSNTextField.enabled = false
             SSNTextField.backgroundColor = UIColor.clearColor()
+            resetTextFields()
         
         case 4:
             switchHighlight(vendorButton)
@@ -145,6 +149,7 @@ class ViewController: UIViewController {
             projectNumberTextField.backgroundColor = UIColor.clearColor()
             SSNTextField.enabled = false
             SSNTextField.backgroundColor = UIColor.clearColor()
+            resetTextFields()
         
         default: break
         
@@ -161,42 +166,50 @@ class ViewController: UIViewController {
             case GuestType.freeChild.rawValue :
                 highlightSubtype(r2b1)
                 childSettings()
+                resetTextFields()
           
             case GuestType.Classic.rawValue :
                 highlightSubtype(r2b2)
                 enableTextFields(false)
+                resetTextFields()
         
             
             case GuestType.seniorGuest.rawValue :
                 highlightSubtype(r2b3)
                 seniorSettings()
-            
+                resetTextFields()
             
             case GuestType.seasonPass.rawValue:
                 highlightSubtype(r2b4)
                 seasonPassSettings()
+                resetTextFields()
            
         
             case GuestType.VIP.rawValue:
                 highlightSubtype(r2b5)
                 enableTextFields(false)
+                resetTextFields()
             
             // Employee
             case EmployeeType.FoodServices.rawValue:
                 highlightSubtype(r2b1)
                 employeeSettings()
+                resetTextFields()
             
             case EmployeeType.RideServices.rawValue:
                 highlightSubtype(r2b2)
                 employeeSettings()
+                resetTextFields()
         
             case EmployeeType.Maintenance.rawValue:
                 highlightSubtype(r2b3)
                 employeeSettings()
+                resetTextFields()
 
             case EmployeeType.Manager.rawValue:
                 highlightSubtype(r2b4)
                 employeeSettings()
+                resetTextFields()
             
             default: break
             
@@ -375,7 +388,7 @@ class ViewController: UIViewController {
         let today = dateFormatter.stringFromDate(NSDate())
         
         if currentlySelectedTypeButton == guestButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!)!, SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
            let entrantType = GuestType(rawValue: currentlySelectedSubType.titleLabel!.text!)!
             pass = PassGenerator(entrant: entrant, entrantType: entrantType)
@@ -396,7 +409,7 @@ class ViewController: UIViewController {
         }
         
         if currentlySelectedTypeButton == vendorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!)!, SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
             let entrantType = VendorType(rawValue: companyTextField.text!)!
             pass = PassGenerator(entrant: entrant, entrantType: entrantType)
@@ -406,7 +419,7 @@ class ViewController: UIViewController {
         }
         
         if currentlySelectedTypeButton == contractorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!)!, SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
             let entrantType = ContractEmployeeType(rawValue: Int(projectNumberTextField.text!)!)!
             pass = PassGenerator(entrant: entrant, entrantType: entrantType)
@@ -453,6 +466,82 @@ class ViewController: UIViewController {
 
     }
     
+    @IBAction func PopulateData(sender: AnyObject) {
+        
+        if currentlySelectedTypeButton == guestButton && currentlySelectedSubType == r2b1 {
+            DOBTextField.text = "1/1/2015"
+        }
+        
+        if currentlySelectedTypeButton == guestButton && currentlySelectedSubType == r2b3 {
+            DOBTextField.text = "1/1/1940"
+            
+            firstNameTextField.text = "Johnny"
+            lastNameTextField.text = "Rocket"
+
+        }
+        
+        if currentlySelectedTypeButton == guestButton && currentlySelectedSubType == r2b4 {
+
+            firstNameTextField.text = "Johnny"
+            lastNameTextField.text = "Rocket"
+            
+            streetAddressTextField.text = "5028 Bennington Ct"
+            cityTextField.text = "Colorado Springs"
+            stateTextField.text = "CO"
+            zipCodeTextField.text = "48116"
+        }
+        
+        if currentlySelectedTypeButton == employeeButton {
+            
+            DOBTextField.text = "1/1/1990"
+            SSNTextField.text = "111223333"
+            
+            firstNameTextField.text = "Johnny"
+            lastNameTextField.text = "Rocket"
+            
+            streetAddressTextField.text = "5028 Bennington Ct"
+            cityTextField.text = "Colorado Springs"
+            stateTextField.text = "CO"
+            zipCodeTextField.text = "48116"
+            
+        }
+        
+        if currentlySelectedTypeButton == vendorButton {
+            DOBTextField.text = "1/1/1990"
+            SSNTextField.text = "111223333"
+            
+            firstNameTextField.text = "Johnny"
+            lastNameTextField.text = "Rocket"
+    
+            let companiesArray = ["Acme", "Orkin", "Fedex", "NW Electrical"]
+            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound((companiesArray.count))
+            companyTextField.text = companiesArray[randomIndex]
+            
+            streetAddressTextField.text = "5028 Bennington Ct"
+            cityTextField.text = "Colorado Springs"
+            stateTextField.text = "CO"
+            zipCodeTextField.text = "48116"
+        }
+        
+        if currentlySelectedTypeButton == contractorButton {
+            DOBTextField.text = "1/1/1990"
+            
+            firstNameTextField.text = "Johnny"
+            lastNameTextField.text = "Rocket"
+            
+            let projectNumbersArray = ["1001", "1002", "1003", "2001", "2002"]
+            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound((projectNumbersArray.count))
+            projectNumberTextField.text = projectNumbersArray[randomIndex]
+            
+            streetAddressTextField.text = "5028 Bennington Ct"
+            cityTextField.text = "Colorado Springs"
+            stateTextField.text = "CO"
+            zipCodeTextField.text = "48116"
+        }
+        
+    }
+    
+    
     // Pass Generated VC
     
     func displayPassVC() {
@@ -470,6 +559,12 @@ class ViewController: UIViewController {
         alert.addAction(okAction)
         
         presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func resetTextFields() {
+        for textField in textFieldArray {
+            textField.text = nil
+        }
     }
     
     //Sound Effects

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -336,6 +337,9 @@
                                         <state key="normal" title="Populate Data">
                                             <color key="titleColor" red="0.25490196079999999" green="0.47450980390000003" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="PopulateData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bMC-eK-8Mn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -487,7 +491,7 @@
                         <outlet property="generatePassButton" destination="qtA-4K-UwL" id="cyS-Zf-5XZ"/>
                         <outlet property="guestButton" destination="8PP-k5-jts" id="aTp-rI-qNx"/>
                         <outlet property="lastNameTextField" destination="zAN-RZ-exo" id="1ZU-gr-Jel"/>
-                        <outlet property="populateDataButton" destination="sOk-Sx-ich" id="Kow-2Q-gH8"/>
+                        <outlet property="populateDataButton" destination="sOk-Sx-ich" id="IYC-le-msu"/>
                         <outlet property="projectNumberTextField" destination="KFt-x9-Rs6" id="FCP-Mz-YRn"/>
                         <outlet property="r2b1" destination="mts-CL-b3c" id="MMn-ck-Xt3"/>
                         <outlet property="r2b2" destination="07Y-uV-W34" id="tLV-RC-x7W"/>
@@ -516,7 +520,33 @@
                     <view key="view" contentMode="scaleToFill" id="2e2-v8-mka">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiU-An-SbT">
+                                <rect key="frame" x="44" y="60" width="500" height="232"/>
+                                <subviews>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Mg-9M-ZWN">
+                                        <rect key="frame" x="237" y="8" width="26" height="7"/>
+                                        <color key="backgroundColor" red="0.84904742239999997" green="0.8275817633" blue="0.87452423570000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="7Mg-9M-ZWN" secondAttribute="height" multiplier="19:5" id="FHB-Lo-wvd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7Mg-9M-ZWN" secondAttribute="trailing" constant="237" id="9ro-nt-Tca"/>
+                                    <constraint firstItem="7Mg-9M-ZWN" firstAttribute="leading" secondItem="RiU-An-SbT" secondAttribute="leading" constant="237" id="Edt-tE-IV6"/>
+                                    <constraint firstAttribute="height" constant="232" id="kaf-6p-DBs"/>
+                                    <constraint firstAttribute="width" constant="500" id="lFI-SY-OEo"/>
+                                    <constraint firstItem="7Mg-9M-ZWN" firstAttribute="top" secondItem="RiU-An-SbT" secondAttribute="top" constant="8" id="piS-Mt-Fmy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84904742239999997" green="0.8275817633" blue="0.87452423570000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="RiU-An-SbT" firstAttribute="top" secondItem="5In-R0-Xqn" secondAttribute="bottom" constant="40" id="sKO-Id-YH6"/>
+                            <constraint firstItem="RiU-An-SbT" firstAttribute="leading" secondItem="2e2-v8-mka" secondAttribute="leadingMargin" constant="24" id="x0v-LP-Blm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsP-aN-mYL" userLabel="First Responder" sceneMemberID="firstResponder"/>

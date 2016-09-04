@@ -55,6 +55,12 @@ class PassGenerator {
             print("No information necessary")
         
         case is EmployeeType, is ContractEmployeeType, GuestType.seasonPass:
+            guard self.entrant.DOB != nil else {
+                throw PersonalInformationError.InvalidDOB
+            }
+            guard self.entrant.SSN != nil else {
+                throw PersonalInformationError.InvalidSSN
+            }
             guard self.entrant.firstName != nil else {
                 throw PersonalInformationError.InvalidName
             }
