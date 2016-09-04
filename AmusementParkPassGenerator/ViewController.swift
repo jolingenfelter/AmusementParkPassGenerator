@@ -140,51 +140,54 @@ class ViewController: UIViewController {
     
     @IBAction func entrantSubtypeSelected(sender: UIButton) {
         
-        switch sender.currentTitle! {
+        if let title = sender.currentTitle {
+            
+            switch title {
         
-        // Guest
-        case "Child" :
-           highlightSubtype(r2b1)
-            childSettings()
+            // Guest
+            case GuestType.freeChild.rawValue :
+                highlightSubtype(r2b1)
+                childSettings()
           
-        case "Adult":
-            highlightSubtype(r2b2)
-            enableTextFields(false)
+            case GuestType.Classic.rawValue :
+                highlightSubtype(r2b2)
+                enableTextFields(false)
         
             
-        case "Senior":
-            highlightSubtype(r2b3)
-            seniorSettings()
+            case GuestType.seniorGuest.rawValue :
+                highlightSubtype(r2b3)
+                seniorSettings()
             
             
-        case "Season Pass":
-            highlightSubtype(r2b4)
-            seasonPassSettings()
+            case GuestType.seasonPass.rawValue:
+                highlightSubtype(r2b4)
+                seasonPassSettings()
            
         
-        case "VIP":
-            highlightSubtype(r2b5)
-            enableTextFields(false)
+            case GuestType.VIP.rawValue:
+                highlightSubtype(r2b5)
+                enableTextFields(false)
             
-        // Employee
-        case "Food Services":
-            highlightSubtype(r2b1)
-            employeeSettings()
+            // Employee
+            case EmployeeType.FoodServices.rawValue:
+                highlightSubtype(r2b1)
+                employeeSettings()
             
-        case "Ride Services":
-            highlightSubtype(r2b2)
-            employeeSettings()
+            case EmployeeType.RideServices.rawValue:
+                highlightSubtype(r2b2)
+                employeeSettings()
         
-        case "Maintenance":
-            highlightSubtype(r2b3)
-            employeeSettings()
+            case EmployeeType.Maintenance.rawValue:
+                highlightSubtype(r2b3)
+                employeeSettings()
 
-        case "Manager" :
-            highlightSubtype(r2b4)
-            employeeSettings()
+            case EmployeeType.Manager.rawValue:
+                highlightSubtype(r2b4)
+                employeeSettings()
             
-        default: break
+            default: break
             
+            }
         }
     }
     
@@ -310,21 +313,21 @@ class ViewController: UIViewController {
     func setSecondRowButtons(button: UIButton) {
         switch button {
             case guestButton :
-                r2b1.setTitle("Child", forState: .Normal)
-                r2b2.setTitle("Adult", forState: .Normal)
-                r2b3.setTitle("Senior", forState: .Normal)
-                r2b4.setTitle("Season Pass", forState: .Normal)
-                r2b5.setTitle("VIP", forState: .Normal)
+                r2b1.setTitle(GuestType.freeChild.rawValue, forState: .Normal)
+                r2b2.setTitle(GuestType.Classic.rawValue, forState: .Normal)
+                r2b3.setTitle(GuestType.seniorGuest.rawValue, forState: .Normal)
+                r2b4.setTitle(GuestType.seasonPass.rawValue, forState: .Normal)
+                r2b5.setTitle(GuestType.VIP.rawValue, forState: .Normal)
                 
                 r2b5.hidden = false
                 secondRowButtonsStackView.addArrangedSubview(r2b5)
                 secondRowButtonsStackView.hidden = false
             
             case employeeButton :
-                r2b1.setTitle("Food Services", forState: .Normal)
-                r2b2.setTitle("Ride Services", forState: .Normal)
-                r2b3.setTitle("Maintenance", forState: .Normal)
-                r2b4.setTitle("Manager", forState: .Normal)
+                r2b1.setTitle(EmployeeType.FoodServices.rawValue, forState: .Normal)
+                r2b2.setTitle(EmployeeType.RideServices.rawValue, forState: .Normal)
+                r2b3.setTitle(EmployeeType.Maintenance.rawValue, forState: .Normal)
+                r2b4.setTitle(EmployeeType.Manager.rawValue, forState: .Normal)
                 
                 r2b5.hidden = true
                 secondRowButtonsStackView.removeArrangedSubview(r2b5)
