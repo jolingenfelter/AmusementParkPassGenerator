@@ -22,6 +22,7 @@ func calculateAge(person: Person) -> Int {
     
     if let birthday = person.DOB  {
         let calendar = NSCalendar.currentCalendar()
+        
         ageComponents = calendar.components(NSCalendarUnit.Year, fromDate: dateFormatter.dateFromString(birthday)!, toDate: NSDate(), options: [])
     }
     

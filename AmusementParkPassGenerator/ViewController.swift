@@ -51,6 +51,7 @@ class ViewController: UIViewController {
     // Instance of Person created from input data
     
     var entrant = Person()
+    var pass: PassGenerator
     
     // Button Highlighting Variables
     
@@ -66,6 +67,18 @@ class ViewController: UIViewController {
     
     var currentlySelectedSubType = UIButton()
     var previouslySelectedSubType = UIButton()
+    
+    init(blankPass: PassGenerator) {
+        self.pass = blankPass
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        let person = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: nil, dateOfVisit: nil, associatedCompany: nil)
+        self.pass = PassGenerator(entrant: person, entrantType: GuestType.Classic)
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -213,6 +226,8 @@ class ViewController: UIViewController {
         
     }
     
+    // TextField Settings
+    
     func seasonPassSettings() {
         enableTextFields(true)
         
@@ -292,14 +307,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    func deselectSubtype() {
-        for button in secondRowButtonsArray {
-            if button.selected == true {
-                button.selected = false
-            }
-        }
-    }
+
     
     // Button helper methods
     
@@ -351,6 +359,61 @@ class ViewController: UIViewController {
         previouslySelectedTypeButton.backgroundColor = buttonNormalStatePurple
         currentlySelectedTypeButton = button
         button.backgroundColor = buttonPressedPurple
+    }
+    
+    func deselectSubtype() {
+        for button in secondRowButtonsArray {
+            if button.selected == true {
+                button.selected = false
+            }
+        }
+    }
+    
+    // Generate Pass
+    @IBAction func GeneratePass(sender: AnyObject) {
+        
+        let today = dateFormatter.stringFromDate(NSDate())
+        
+        if currentlySelectedTypeButton == guestButton {
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            
+           let entrantType = GuestType(rawValue: currentlySelectedSubType.titleLabel!.text!)!
+            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+            
+            do {
+                try pass.checkForCorrectData()
+                pass.printData()
+            } catch let error {
+                displayAlertWithTitle("Error", andMessage: "\(error)")
+            }
+            
+        }
+        
+        
+        if currentlySelectedSubType == employeeButton {
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            
+            let entrantType = EmployeeType(rawValue: currentlySelectedSubType.titleLabel!.text!)!
+            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+
+        }
+        
+        if currentlySelectedTypeButton == vendorButton {
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            
+            let entrantType = VendorType(rawValue: companyTextField.text!)!
+            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+
+        }
+        
+        if currentlySelectedTypeButton == contractorButton {
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            
+            let entrantType = ContractEmployeeType(rawValue: Int(projectNumberTextField.text!)!)!
+            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+          
+        }
+        
     }
     
     // Helper Methods

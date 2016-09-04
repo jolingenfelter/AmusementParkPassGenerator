@@ -23,29 +23,25 @@ class PassGenerator {
         switch self.entrantType {
         case GuestType.freeChild:
             guard self.entrant.DOB != nil else {
-                print(PersonalInformationError.InvalidDOB.rawValue)
                 throw PersonalInformationError.InvalidDOB
             }
             
             let entrantAge = calculateAge(self.entrant)
             
             if entrantAge > 5 {
-                self.entrantType = GuestType.Classic
+                throw PersonalInformationError.InvalidDOB
             }
         
         case GuestType.seniorGuest:
             guard self.entrant.firstName != nil else {
-                print(PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidName
             }
             
             guard self.entrant.lastName != nil else {
-                print(PersonalInformationError.InvalidName.rawValue)
                 throw(PersonalInformationError.InvalidName)
             }
             
             guard self.entrant.DOB != nil else {
-                print(PersonalInformationError.InvalidDOB.rawValue)
                 throw PersonalInformationError.InvalidDOB
             }
             
@@ -60,48 +56,46 @@ class PassGenerator {
         
         case is EmployeeType, is ContractEmployeeType, GuestType.seasonPass:
             guard self.entrant.firstName != nil else {
-                print(PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidName
             }
             guard self.entrant.lastName != nil else {
-                print(PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidName
             }
             guard self.entrant.address != nil else {
-                (PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidAddress
             }
             guard self.entrant.city != nil else {
-                (PersonalInformationError.InvalidCity.rawValue)
                 throw PersonalInformationError.InvalidCity
             }
             guard self.entrant.state != nil else {
-                (PersonalInformationError.InvalidState.rawValue)
                 throw PersonalInformationError.InvalidState
             }
             guard self.entrant.zipCode != nil else {
-                (PersonalInformationError.InvalidZipCode.rawValue)
                 throw PersonalInformationError.InvalidZipCode
+            }
+            
+            guard self.entrant.zipCode == Int() else {
+                throw PersonalInformationError.InvalidZipCode
+            }
+            
+            guard self.entrant.SSN == Int() else {
+                throw PersonalInformationError.InvalidSSN
             }
         
         case is VendorType:
             guard self.entrant.firstName != nil else {
-                print(PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidName
             }
             
             guard self.entrant.lastName != nil else {
-                print(PersonalInformationError.InvalidName.rawValue)
                 throw PersonalInformationError.InvalidName
             }
             
             guard self.entrant.associatedCompany != nil else {
-                print(PersonalInformationError.InvalidCompany.rawValue)
                 throw PersonalInformationError.InvalidCompany
             }
             
             guard self.entrant.dateOfVisit != nil else {
-                print(PersonalInformationError.InvalidDateOfVisit.rawValue)
                 throw PersonalInformationError.InvalidDateOfVisit
             }
             
