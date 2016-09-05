@@ -47,8 +47,8 @@ enum PersonalInformationError: String, ErrorType {
     case InvalidAddress = "No valid address provided"
     case InvalidCity = "No valid city provided"
     case InvalidState = "No valid state provided"
-    case InvalidZipCode = "No valid zipcode provided"
-    case InvalidSSN = "No valid social security number provided"
+    case InvalidZipCode = "Invalid zip code"
+    case InvalidSSN = "Invalid social security number"
     case InvalidDOB = "Invalid date of birth"
     case InvalidEntrantType = "Invalid Entrant Type"
     case InvalidDateOfVisit = "Invalid visit date"
@@ -103,7 +103,7 @@ enum EmployeeType: String, Entrant {
 
 enum VendorType: String, Entrant {
     
-    case ACME = "ACME"
+    case ACME = "Acme"
     case Orkin = "Orkin"
     case Fedex = "Fedex"
     case NWElectrical = "NW Electrical"

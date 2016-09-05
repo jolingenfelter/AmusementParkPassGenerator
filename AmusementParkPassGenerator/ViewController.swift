@@ -8,7 +8,19 @@
 
 import UIKit
 import AudioToolbox
-import GameKit
+
+extension Array {
+    var shuffle:[Element] {
+        var elements = self
+        for index in 0..<elements.count {
+            let newIndex = Int(arc4random_uniform(UInt32(elements.count-index)))+index
+            if index != newIndex {
+                swap(&elements[index], &elements[newIndex])
+            }
+        }
+        return elements
+    }
+}
 
 class ViewController: UIViewController {
     
@@ -137,8 +149,6 @@ class ViewController: UIViewController {
             enableTextFields(true)
             companyTextField.enabled = false
             companyTextField.backgroundColor = UIColor.clearColor()
-            SSNTextField.enabled = false
-            SSNTextField.backgroundColor = UIColor.clearColor()
             resetTextFields()
         
         case 4:
@@ -387,12 +397,17 @@ class ViewController: UIViewController {
         
         let today = dateFormatter.stringFromDate(NSDate())
         
+        
         if currentlySelectedTypeButton == guestButton {
+            
             entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
-           let entrantType = GuestType(rawValue: currentlySelectedSubType.titleLabel!.text!)!
-            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+            guard let subtype = currentlySelectedSubType.titleLabel!.text, let guestType = GuestType(rawValue: subtype) else {
+                displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
+                return
+            }
             
+            pass = PassGenerator(entrant: entrant, entrantType: guestType)
             tryPass(pass)
             
         }
@@ -401,11 +416,13 @@ class ViewController: UIViewController {
         if currentlySelectedTypeButton == employeeButton {
             entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
             
-            let entrantType = EmployeeType(rawValue: currentlySelectedSubType.titleLabel!.text!)!
-            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+            guard let subtype = currentlySelectedSubType.titleLabel!.text, let employeeType = EmployeeType(rawValue: subtype) else {
+                displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
+                return
+            }
             
+            pass = PassGenerator(entrant: entrant, entrantType: employeeType)
             tryPass(pass)
-
         }
         
         if currentlySelectedTypeButton == vendorButton {
@@ -508,14 +525,12 @@ class ViewController: UIViewController {
         
         if currentlySelectedTypeButton == vendorButton {
             DOBTextField.text = "1/1/1990"
-            SSNTextField.text = "111223333"
             
             firstNameTextField.text = "Johnny"
             lastNameTextField.text = "Rocket"
     
             let companiesArray = ["Acme", "Orkin", "Fedex", "NW Electrical"]
-            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound((companiesArray.count))
-            companyTextField.text = companiesArray[randomIndex]
+            companyTextField.text = (companiesArray.shuffle)[0]
             
             streetAddressTextField.text = "5028 Bennington Ct"
             cityTextField.text = "Colorado Springs"
@@ -525,13 +540,13 @@ class ViewController: UIViewController {
         
         if currentlySelectedTypeButton == contractorButton {
             DOBTextField.text = "1/1/1990"
+            SSNTextField.text = "111223333"
             
             firstNameTextField.text = "Johnny"
             lastNameTextField.text = "Rocket"
             
             let projectNumbersArray = ["1001", "1002", "1003", "2001", "2002"]
-            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound((projectNumbersArray.count))
-            projectNumberTextField.text = projectNumbersArray[randomIndex]
+            projectNumberTextField.text = (projectNumbersArray.shuffle)[0]
             
             streetAddressTextField.text = "5028 Bennington Ct"
             cityTextField.text = "Colorado Springs"

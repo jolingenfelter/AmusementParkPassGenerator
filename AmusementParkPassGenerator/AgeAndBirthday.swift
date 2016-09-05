@@ -16,16 +16,18 @@ var dateFormatter: NSDateFormatter {
     return dateFormatter
 }
 
-func calculateAge(person: Person) -> Int {
+func calculateAge(person: Person) throws -> Int {
     
     var ageComponents = NSDateComponents()
     
-    if let birthday = person.DOB  {
-        let calendar = NSCalendar.currentCalendar()
-        
-        ageComponents = calendar.components(NSCalendarUnit.Year, fromDate: dateFormatter.dateFromString(birthday)!, toDate: NSDate(), options: [])
+    guard let birthday = person.DOB, let fromDate = dateFormatter.dateFromString(birthday) else {
+        throw PersonalInformationError.InvalidDOB
     }
     
+    let calendar = NSCalendar.currentCalendar()
+        
+    ageComponents = calendar.components(NSCalendarUnit.Year, fromDate: fromDate, toDate: NSDate(), options: [])
+
     return ageComponents.year
     
 }

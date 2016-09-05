@@ -26,7 +26,7 @@ class PassGenerator {
                 throw PersonalInformationError.InvalidDOB
             }
             
-            let entrantAge = calculateAge(self.entrant)
+            let entrantAge = try calculateAge(self.entrant)
             
             if entrantAge > 5 {
                 throw PersonalInformationError.InvalidDOB
@@ -45,7 +45,7 @@ class PassGenerator {
                 throw PersonalInformationError.InvalidDOB
             }
             
-            let entrantAge = calculateAge(self.entrant)
+            let entrantAge = try calculateAge(self.entrant)
             
             if entrantAge < 65 {
                 self.entrantType = GuestType.Classic
@@ -100,8 +100,6 @@ class PassGenerator {
         default: break
         
         }
-        
-        checkForBirthday(self.entrant)
     
     }
     
