@@ -137,7 +137,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SlV-tX-5Am" userLabel="DOB">
                                         <rect key="frame" x="0.0" y="0.0" width="173" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPh-qj-Ryv">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth (MM/DD/YYYY)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPh-qj-Ryv">
                                                 <rect key="frame" x="0.0" y="0.0" width="173" height="15"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -649,6 +649,61 @@
                                             </mask>
                                         </variation>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="muZ-ON-MdL" userLabel="DiscountAndLinesStackView">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Merchandise Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVM-94-QdU">
+                                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paz-1E-hbj">
+                                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Access" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iad-cz-jA1">
+                                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="paz-1E-hbj" firstAttribute="width" secondItem="xVM-94-QdU" secondAttribute="width" id="Gue-tY-jS6"/>
+                                            <constraint firstAttribute="height" constant="90" id="MEv-o6-L7c">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                                            </constraint>
+                                            <constraint firstAttribute="width" constant="60" id="dWa-eC-n78">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                                            </constraint>
+                                            <constraint firstItem="iad-cz-jA1" firstAttribute="height" secondItem="xVM-94-QdU" secondAttribute="height" id="eLP-tP-bfj"/>
+                                            <constraint firstItem="iad-cz-jA1" firstAttribute="width" secondItem="xVM-94-QdU" secondAttribute="width" id="liQ-2i-bk0"/>
+                                            <constraint firstItem="paz-1E-hbj" firstAttribute="height" secondItem="xVM-94-QdU" secondAttribute="height" id="smn-wL-WgH"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="MEv-o6-L7c"/>
+                                                <exclude reference="dWa-eC-n78"/>
+                                                <exclude reference="Gue-tY-jS6"/>
+                                                <exclude reference="smn-wL-WgH"/>
+                                                <exclude reference="eLP-tP-bfj"/>
+                                                <exclude reference="liQ-2i-bk0"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="MEv-o6-L7c"/>
+                                                <include reference="dWa-eC-n78"/>
+                                                <include reference="Gue-tY-jS6"/>
+                                                <include reference="smn-wL-WgH"/>
+                                                <include reference="eLP-tP-bfj"/>
+                                                <include reference="liQ-2i-bk0"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -657,7 +712,9 @@
                                     <constraint firstAttribute="width" constant="615" id="4Zk-cg-90p"/>
                                     <constraint firstAttribute="trailing" secondItem="9lY-Ne-70F" secondAttribute="trailing" constant="366" id="GAC-z2-NKk"/>
                                     <constraint firstItem="KOw-wc-HXs" firstAttribute="top" secondItem="9lY-Ne-70F" secondAttribute="top" id="N1f-dS-UfH"/>
+                                    <constraint firstItem="muZ-ON-MdL" firstAttribute="leading" secondItem="9lY-Ne-70F" secondAttribute="trailing" constant="14" id="Rb8-gQ-WzJ"/>
                                     <constraint firstItem="9lY-Ne-70F" firstAttribute="top" secondItem="RiU-An-SbT" secondAttribute="top" constant="18" id="WUs-00-qNP"/>
+                                    <constraint firstItem="muZ-ON-MdL" firstAttribute="top" secondItem="A4g-al-UAw" secondAttribute="bottom" constant="-1" id="bCr-ts-k4x"/>
                                     <constraint firstItem="A4g-al-UAw" firstAttribute="centerX" secondItem="KOw-wc-HXs" secondAttribute="centerX" id="g7N-zj-cD3"/>
                                     <constraint firstItem="7Mg-9M-ZWN" firstAttribute="top" secondItem="RiU-An-SbT" secondAttribute="top" constant="10" id="kxi-Cu-OJm"/>
                                     <constraint firstItem="9lY-Ne-70F" firstAttribute="leading" secondItem="RiU-An-SbT" secondAttribute="leading" constant="24" id="nW6-Bt-A3I"/>
@@ -666,6 +723,9 @@
                                     <constraint firstAttribute="height" constant="259" id="ySl-cX-skW"/>
                                 </constraints>
                                 <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="muZ-ON-MdL"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="4Zk-cg-90p"/>
                                         <exclude reference="ySl-cX-skW"/>
@@ -673,6 +733,8 @@
                                         <exclude reference="GAC-z2-NKk"/>
                                         <exclude reference="WUs-00-qNP"/>
                                         <exclude reference="nW6-Bt-A3I"/>
+                                        <exclude reference="Rb8-gQ-WzJ"/>
+                                        <exclude reference="bCr-ts-k4x"/>
                                         <exclude reference="1kK-JM-0Xq"/>
                                         <exclude reference="kxi-Cu-OJm"/>
                                         <exclude reference="N1f-dS-UfH"/>
@@ -682,6 +744,9 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="muZ-ON-MdL"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="4Zk-cg-90p"/>
                                         <include reference="ySl-cX-skW"/>
@@ -689,6 +754,8 @@
                                         <include reference="GAC-z2-NKk"/>
                                         <include reference="WUs-00-qNP"/>
                                         <include reference="nW6-Bt-A3I"/>
+                                        <include reference="Rb8-gQ-WzJ"/>
+                                        <include reference="bCr-ts-k4x"/>
                                         <include reference="1kK-JM-0Xq"/>
                                         <include reference="kxi-Cu-OJm"/>
                                         <include reference="N1f-dS-UfH"/>
@@ -748,7 +815,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Obl-09-XGG" userLabel="TestButtonStackView">
                                 <rect key="frame" x="20" y="361" width="417" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tls-UL-EgD">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tls-UL-EgD">
                                         <rect key="frame" x="0.0" y="0.0" width="119" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -772,7 +839,7 @@
                                             <action selector="swipeForDiscountAccess:" destination="oId-tD-r6h" eventType="touchUpInside" id="aCO-5u-Pef"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nS9-Yy-ffC">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nS9-Yy-ffC">
                                         <rect key="frame" x="149" y="0.0" width="119" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -783,7 +850,7 @@
                                             <action selector="swipeForRideAccess:" destination="oId-tD-r6h" eventType="touchUpInside" id="Gux-yG-fhf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-DR-GYg">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-DR-GYg">
                                         <rect key="frame" x="298" y="0.0" width="119" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -919,18 +986,18 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="F3o-uR-7oV"/>
                                                 <exclude reference="y4B-Je-d3c"/>
                                                 <exclude reference="L7s-Z2-nk9"/>
                                                 <exclude reference="IoL-6d-fcU"/>
+                                                <exclude reference="F3o-uR-7oV"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <mask key="constraints">
-                                                <include reference="F3o-uR-7oV"/>
                                                 <include reference="y4B-Je-d3c"/>
                                                 <include reference="L7s-Z2-nk9"/>
                                                 <include reference="IoL-6d-fcU"/>
+                                                <include reference="F3o-uR-7oV"/>
                                             </mask>
                                         </variation>
                                     </stackView>
@@ -1098,12 +1165,15 @@
                         <outlet property="amusementParkLabel" destination="oUf-qB-rGa" id="XTu-VC-Ovx"/>
                         <outlet property="areaTestingStackView" destination="vgj-FH-Vpo" id="5BA-Pa-2S8"/>
                         <outlet property="dateLabel" destination="KOw-wc-HXs" id="QkL-uj-Pbo"/>
+                        <outlet property="foodLabel" destination="paz-1E-hbj" id="dgZ-qL-VX1"/>
                         <outlet property="kitchenLabel" destination="JSP-iR-mXt" id="fyG-bX-zn4"/>
                         <outlet property="maintenanceZonesLabel" destination="U0c-25-4hC" id="Cdf-md-Lel"/>
+                        <outlet property="merchandiseLabel" destination="xVM-94-QdU" id="8Dx-qn-uE7"/>
                         <outlet property="officesLabel" destination="ci0-Nd-7rP" id="VSc-D2-CTy"/>
                         <outlet property="passTypeLabel" destination="A4g-al-UAw" id="UjE-BS-JJ0"/>
                         <outlet property="passView" destination="RiU-An-SbT" id="qep-Jf-5qS"/>
                         <outlet property="pictureView" destination="9lY-Ne-70F" id="Kgu-bX-DuR"/>
+                        <outlet property="rideAccessLabel" destination="iad-cz-jA1" id="baY-BY-KRx"/>
                         <outlet property="rideControlLabel" destination="moI-YM-isc" id="gSY-I5-OTi"/>
                         <outlet property="testAreaView" destination="bDP-ae-FXb" id="ZXk-29-hzZ"/>
                     </connections>

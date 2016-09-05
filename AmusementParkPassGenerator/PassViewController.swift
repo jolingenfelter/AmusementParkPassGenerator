@@ -23,6 +23,13 @@ class PassViewController: UIViewController {
     @IBOutlet weak var rideControlLabel: UILabel!
     
     @IBOutlet weak var areaTestingStackView: UIStackView!
+    
+    // Discount Testing Labels
+    @IBOutlet weak var merchandiseLabel: UILabel!
+    @IBOutlet weak var foodLabel: UILabel!
+    
+    //Ride Access Testing Label
+    @IBOutlet weak var rideAccessLabel: UILabel!
 
     
     // Buttons
@@ -44,7 +51,7 @@ class PassViewController: UIViewController {
     
     var generatedPass: PassGenerator?
     
-    var entrantDiscount: DiscountAccessType {
+    var entrantDiscountAccess: DiscountAccessType {
         guard let pass = generatedPass?.entrantType else {
             return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }
@@ -131,9 +138,39 @@ class PassViewController: UIViewController {
     }
     
     @IBAction func swipeForRideAccess(sender: AnyObject) {
+        if entrantRideAccess.allRides == true && entrantRideAccess.skipLines == true {
+            rideAccessLabel.text = "All rides, skip lines"
+            playAccessGrantedSound()
+        }
+        
+        if entrantRideAccess.allRides == false && entrantRideAccess.skipLines == false {
+            rideAccessLabel.text = "No ride access"
+            playAccessDeniedSound()
+        }
+        
+        if entrantRideAccess.allRides == true && entrantRideAccess.skipLines == false {
+            rideAccessLabel.text = "All rides, normal lines"
+            playAccessGrantedSound()
+        }
     }
     
     @IBAction func swipeForDiscountAccess(sender: AnyObject) {
+        
+        if entrantDiscountAccess.merchandiseDiscount != 0 {
+            playAccessGrantedSound()
+            merchandiseLabel.text = "Merchandise discount: \(String(entrantDiscountAccess.merchandiseDiscount))%"
+        }
+        
+        if entrantDiscountAccess.foodDiscount != 0 {
+            playAccessGrantedSound()
+            foodLabel.text = "Food discount: \(entrantDiscountAccess.foodDiscount)%"
+        }
+        
+        else if entrantDiscountAccess.foodDiscount == 0 && entrantDiscountAccess.merchandiseDiscount == 0 {
+            playAccessDeniedSound()
+            merchandiseLabel.text = "No discount on merchandise today"
+            foodLabel.text = "No discount on food today"
+        }
     }
     
     //Sound Effects

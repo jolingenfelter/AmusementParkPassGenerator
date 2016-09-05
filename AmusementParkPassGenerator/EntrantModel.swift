@@ -38,8 +38,8 @@ struct RideAccessType {
 }
 
 struct DiscountAccessType {
-    var foodDiscount: Double?
-    var merchandiseDiscount: Double?
+    var foodDiscount: Double
+    var merchandiseDiscount: Double
 }
 
 enum PersonalInformationError: String, ErrorType {
@@ -88,9 +88,9 @@ enum EmployeeType: String, Entrant {
     func discountAccess() -> DiscountAccessType {
         switch self {
         case .Manager:
-            return DiscountAccessType(foodDiscount: 0.25, merchandiseDiscount: 0.25)
+            return DiscountAccessType(foodDiscount: 25, merchandiseDiscount: 25)
         default:
-            return DiscountAccessType(foodDiscount: 0.15, merchandiseDiscount: 0.25)
+            return DiscountAccessType(foodDiscount: 15, merchandiseDiscount: 25)
         }
     }
     
@@ -120,7 +120,7 @@ enum VendorType: String, Entrant {
     }
     
     func discountAccess() -> DiscountAccessType {
-        return DiscountAccessType(foodDiscount: nil, merchandiseDiscount: nil)
+        return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
     }
     
     func rideAccess() -> RideAccessType {
@@ -153,7 +153,7 @@ enum ContractEmployeeType: Int, Entrant {
     }
     
     func discountAccess() -> DiscountAccessType {
-        return DiscountAccessType(foodDiscount: nil, merchandiseDiscount: nil)
+        return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
     }
     
     func rideAccess() -> RideAccessType {
@@ -188,9 +188,9 @@ enum GuestType: String, Entrant {
     func discountAccess() -> DiscountAccessType {
         switch self {
         case .VIP, .seasonPass:
-            return DiscountAccessType(foodDiscount: 0.10, merchandiseDiscount: 0.20)
+            return DiscountAccessType(foodDiscount: 10, merchandiseDiscount: 20)
         case .seniorGuest:
-            return DiscountAccessType(foodDiscount: 0.10, merchandiseDiscount: 0.10)
+            return DiscountAccessType(foodDiscount: 10, merchandiseDiscount: 10)
         default:
             return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }

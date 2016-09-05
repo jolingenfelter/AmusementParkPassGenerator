@@ -120,8 +120,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Initial Setup
         self.initialViewSetup()
         self.setupPickerViews()
-        
-        DOBTextField.placeholder = "MM/DD/YYYY"
     }
     
     // PickerViews
@@ -656,11 +654,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func resetTextFields() {
         for textField in textFieldArray {
-            if textField == DOBTextField {
-                textField.placeholder = "MM/DD/YYYY"
-            } else {
                 textField.text = nil
-            }
         }
     }
 
