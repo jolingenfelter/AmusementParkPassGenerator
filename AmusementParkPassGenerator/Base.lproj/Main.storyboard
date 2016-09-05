@@ -659,6 +659,9 @@
                                 <state key="normal" title="Create New Pass">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="e8o-Hf-KCM"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-ae-FXb">
                                 <rect key="frame" x="20" y="406" width="560" height="148"/>
@@ -679,9 +682,9 @@
                         <color key="backgroundColor" red="0.84904742239999997" green="0.8275817633" blue="0.87452423570000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7SA-Mb-GQE" firstAttribute="top" relation="lessThanOrEqual" secondItem="bDP-ae-FXb" secondAttribute="bottom" constant="30" id="1Dg-WY-Gi1"/>
-                            <constraint firstItem="RiU-An-SbT" firstAttribute="top" relation="lessThanOrEqual" secondItem="YL2-gd-96c" secondAttribute="bottom" constant="40" id="6yz-Sw-UEe"/>
+                            <constraint firstItem="RiU-An-SbT" firstAttribute="top" relation="lessThanOrEqual" secondItem="YL2-gd-96c" secondAttribute="bottom" constant="80" id="6yz-Sw-UEe"/>
                             <constraint firstItem="7SA-Mb-GQE" firstAttribute="centerX" secondItem="2e2-v8-mka" secondAttribute="centerX" id="AcV-Xj-ehV"/>
-                            <constraint firstItem="wBG-dk-aCL" firstAttribute="top" relation="lessThanOrEqual" secondItem="BQg-Eq-b2O" secondAttribute="bottom" constant="40" id="E05-fK-0Tj"/>
+                            <constraint firstItem="wBG-dk-aCL" firstAttribute="top" relation="lessThanOrEqual" secondItem="BQg-Eq-b2O" secondAttribute="bottom" constant="80" id="E05-fK-0Tj"/>
                             <constraint firstItem="7SA-Mb-GQE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bDP-ae-FXb" secondAttribute="bottom" priority="750" constant="6" id="EMx-qF-Sey"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BQg-Eq-b2O" secondAttribute="trailing" constant="-20" id="FwJ-Nk-GDc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YL2-gd-96c" secondAttribute="trailing" constant="-20" id="LHr-u4-b4M"/>
@@ -690,20 +693,19 @@
                             <constraint firstItem="Obl-09-XGG" firstAttribute="top" secondItem="EkB-Wv-xfZ" secondAttribute="bottom" priority="250" constant="15" id="Tio-q5-VsX"/>
                             <constraint firstItem="BQg-Eq-b2O" firstAttribute="leading" secondItem="2e2-v8-mka" secondAttribute="leadingMargin" constant="-20" id="VqZ-rw-nAe"/>
                             <constraint firstItem="bDP-ae-FXb" firstAttribute="trailing" secondItem="2e2-v8-mka" secondAttribute="trailingMargin" id="YMN-VF-8az"/>
-                            <constraint firstItem="wBG-dk-aCL" firstAttribute="top" relation="lessThanOrEqual" secondItem="RiU-An-SbT" secondAttribute="bottom" constant="31" id="bdK-uh-jKV"/>
                             <constraint firstItem="bDP-ae-FXb" firstAttribute="leading" secondItem="2e2-v8-mka" secondAttribute="leadingMargin" id="c9X-7z-6sC"/>
                             <constraint firstItem="wBG-dk-aCL" firstAttribute="top" secondItem="BQg-Eq-b2O" secondAttribute="bottom" constant="15" id="cfk-zA-HId"/>
                             <constraint firstItem="7SA-Mb-GQE" firstAttribute="top" relation="lessThanOrEqual" secondItem="bDP-ae-FXb" secondAttribute="bottom" constant="20" id="dab-1V-so1"/>
                             <constraint firstItem="RiU-An-SbT" firstAttribute="centerX" secondItem="2e2-v8-mka" secondAttribute="centerX" id="diX-dZ-WFo"/>
                             <constraint firstItem="7Mg-9M-ZWN" firstAttribute="centerX" secondItem="RiU-An-SbT" secondAttribute="centerX" id="e0T-0G-xlq"/>
-                            <constraint firstItem="BQg-Eq-b2O" firstAttribute="top" relation="lessThanOrEqual" secondItem="RiU-An-SbT" secondAttribute="bottom" constant="40" id="gPA-kL-iXq"/>
+                            <constraint firstItem="BQg-Eq-b2O" firstAttribute="top" relation="lessThanOrEqual" secondItem="RiU-An-SbT" secondAttribute="bottom" constant="80" id="gPA-kL-iXq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Obl-09-XGG" secondAttribute="trailing" id="hY7-bO-IpD"/>
                             <constraint firstItem="EkB-Wv-xfZ" firstAttribute="top" secondItem="wBG-dk-aCL" secondAttribute="bottom" constant="1" id="kHb-gE-cxk"/>
+                            <constraint firstItem="Obl-09-XGG" firstAttribute="top" relation="lessThanOrEqual" secondItem="EkB-Wv-xfZ" secondAttribute="bottom" constant="80" id="mYD-ml-sF0"/>
                             <constraint firstItem="7Er-mX-s8D" firstAttribute="top" relation="lessThanOrEqual" secondItem="BQg-Eq-b2O" secondAttribute="bottom" constant="1020" id="nQJ-uW-W0a"/>
                             <constraint firstItem="YL2-gd-96c" firstAttribute="leading" secondItem="2e2-v8-mka" secondAttribute="leadingMargin" constant="-20" id="nVv-Ei-BeH"/>
                             <constraint firstItem="wBG-dk-aCL" firstAttribute="centerX" secondItem="2e2-v8-mka" secondAttribute="centerX" id="pSZ-in-e8N"/>
-                            <constraint firstItem="Obl-09-XGG" firstAttribute="top" relation="lessThanOrEqual" secondItem="EkB-Wv-xfZ" secondAttribute="bottom" constant="30" id="puS-RW-gDP"/>
-                            <constraint firstItem="7Er-mX-s8D" firstAttribute="top" relation="lessThanOrEqual" secondItem="7SA-Mb-GQE" secondAttribute="bottom" constant="80" id="rbx-pU-ufB"/>
+                            <constraint firstItem="7Er-mX-s8D" firstAttribute="top" relation="lessThanOrEqual" secondItem="7SA-Mb-GQE" secondAttribute="bottom" constant="200" id="rbx-pU-ufB"/>
                             <constraint firstItem="7Er-mX-s8D" firstAttribute="top" secondItem="7SA-Mb-GQE" secondAttribute="bottom" priority="250" constant="10" id="t6X-aF-7cb"/>
                             <constraint firstItem="BQg-Eq-b2O" firstAttribute="top" secondItem="RiU-An-SbT" secondAttribute="bottom" priority="250" constant="15" id="tMw-hw-muy"/>
                             <constraint firstItem="RiU-An-SbT" firstAttribute="top" secondItem="YL2-gd-96c" secondAttribute="bottom" priority="250" constant="15" id="uz1-PH-97x"/>
@@ -712,12 +714,12 @@
                             <constraint firstItem="RiU-An-SbT" firstAttribute="top" secondItem="7Mg-9M-ZWN" secondAttribute="bottom" constant="-10" id="wy0-9j-xBh"/>
                             <constraint firstItem="Obl-09-XGG" firstAttribute="leading" secondItem="2e2-v8-mka" secondAttribute="leadingMargin" id="zdN-Gi-2nX"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="bdK-uh-jKV"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="AreaAccessTestButton" destination="e6C-DR-GYg" id="21I-Qd-qEU"/>
+                        <outlet property="DiscountAccessTestButton" destination="tls-UL-EgD" id="dpb-5h-pd3"/>
+                        <outlet property="RideAccessTestButton" destination="nS9-Yy-ffC" id="r8O-iA-qG8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsP-aN-mYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

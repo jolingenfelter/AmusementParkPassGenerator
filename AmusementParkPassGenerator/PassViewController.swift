@@ -9,5 +9,8 @@
 import UIKit
 
 class PassViewController: UIViewController {
+    @IBOutlet weak var AreaAccessTestButton: UIButton!
+    @IBOutlet weak var RideAccessTestButton: UIButton!
+    @IBOutlet weak var DiscountAccessTestButton: UIButton!
 
 }

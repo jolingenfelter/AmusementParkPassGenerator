@@ -22,7 +22,7 @@ extension Array {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var accessGrantedSound: SystemSoundID = 0
     var accessDeniedSound: SystemSoundID = 0
@@ -61,6 +61,12 @@ class ViewController: UIViewController {
     
     var textFieldArray = [UITextField]()
     
+    // Picker Views
+    var companiesArray = [VendorType.ACME.rawValue, VendorType.Orkin.rawValue, VendorType.Fedex.rawValue, VendorType.NWElectrical.rawValue]
+    var projectNumbersArray = [String]()
+    var companyPicker = UIPickerView()
+    var projectNumberPicker = UIPickerView()
+    
     // Instance of Person created from input data
     
     var entrant = Person()
@@ -83,6 +89,7 @@ class ViewController: UIViewController {
     
     init(blankPass: PassGenerator) {
         self.pass = blankPass
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -95,16 +102,82 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Sound effects
         loadAccessDeniedSound()
         loadAccessGrantedSound()
         
+        // Colors to highlight and unhighlight type
         buttonPressedPurple = UIColor(red: 151/255.0, green: 114/255.0, blue: 194/255.0, alpha: 1)
         buttonNormalStatePurple = UIColor(red: 129/255.0, green: 98/255.0, blue: 164/255.0, alpha: 1.0)
         
+        // Arrays for convenience later
         secondRowButtonsArray = [r2b1, r2b2, r2b3, r2b4, r2b5]
         textFieldArray = [DOBTextField, SSNTextField, projectNumberTextField, firstNameTextField, lastNameTextField, companyTextField, streetAddressTextField, cityTextField, stateTextField, zipCodeTextField]
         
+        // Round Buttons
+        generatePassButton.layer.cornerRadius = 5
+        generatePassButton.layer.masksToBounds = true
+        
+        populateDataButton.layer.cornerRadius = 5
+        populateDataButton.layer.masksToBounds = true
+        
+        // Initial Setup
         self.initialViewSetup()
+        self.setupPickerViews()
+    }
+    
+    // PickerViews
+    
+    func setupPickerViews() {
+        companiesArray = [VendorType.ACME.rawValue, VendorType.Orkin.rawValue, VendorType.Fedex.rawValue, VendorType.NWElectrical.rawValue]
+        projectNumbersArray = [String(ContractEmployeeType.A.rawValue), String(ContractEmployeeType.B.rawValue), String(ContractEmployeeType.C.rawValue), String(ContractEmployeeType.D.rawValue), String(ContractEmployeeType.E.rawValue)]
+        
+        companyPicker.delegate = self
+        companyTextField.inputView = companyPicker
+        
+        projectNumberPicker.delegate = self
+        projectNumberTextField.inputView = projectNumberPicker
+
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        var numberOfrows = 0
+        
+        if pickerView == companyPicker {
+            numberOfrows = companiesArray.count
+        } else if pickerView == projectNumberPicker {
+            numberOfrows = projectNumbersArray.count
+        }
+        
+        return numberOfrows
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        var title = String()
+        
+        if pickerView == companyPicker {
+            title = companiesArray[row]
+        } else if pickerView == projectNumberPicker {
+            title = projectNumbersArray[row]
+        }
+        
+        return title
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if pickerView == companyPicker {
+            companyTextField.text = companiesArray[row]
+        } else if pickerView == projectNumberPicker {
+            projectNumberTextField.text = projectNumbersArray[row]
+        }
     }
     
     func initialViewSetup() {
@@ -531,7 +604,6 @@ class ViewController: UIViewController {
             firstNameTextField.text = "Johnny"
             lastNameTextField.text = "Rocket"
     
-            let companiesArray = ["Acme", "Orkin", "Fedex", "NW Electrical"]
             companyTextField.text = (companiesArray.shuffle)[0]
             
             streetAddressTextField.text = "5028 Bennington Ct"
@@ -547,7 +619,6 @@ class ViewController: UIViewController {
             firstNameTextField.text = "Johnny"
             lastNameTextField.text = "Rocket"
             
-            let projectNumbersArray = ["1001", "1002", "1003", "2001", "2002"]
             projectNumberTextField.text = (projectNumbersArray.shuffle)[0]
             
             streetAddressTextField.text = "5028 Bennington Ct"
