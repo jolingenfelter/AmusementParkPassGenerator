@@ -51,8 +51,7 @@ enum PersonalInformationError: String, ErrorType {
     case InvalidSSN = "Invalid social security number"
     case InvalidDOB = "Invalid date of birth"
     case InvalidEntrantType = "Invalid Entrant Type"
-    case InvalidDateOfVisit = "Invalid visit date"
-    case InvalidCompany = "Invalid Company"
+
 }
 
 protocol PersonalInformation {
@@ -65,7 +64,6 @@ protocol PersonalInformation {
     var SSN: Int? { get }
     var DOB: String? { get }
     var dateOfVisit: String? { get }
-    var associatedCompany: VendorType? { get }
 }
 
 enum EmployeeType: String, Entrant {
@@ -173,7 +171,6 @@ struct Person: PersonalInformation {
     var SSN: Int?
     var DOB: String?
     var dateOfVisit: String?
-    var associatedCompany: VendorType?
     
 }
 

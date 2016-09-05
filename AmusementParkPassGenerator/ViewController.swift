@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     
     
     required init?(coder aDecoder: NSCoder) {
-        let person = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: nil, dateOfVisit: nil, associatedCompany: nil)
+        let person = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: nil, dateOfVisit: nil)
         self.pass = PassGenerator(entrant: person, entrantType: GuestType.Classic)
         super.init(coder: aDecoder)
     }
@@ -400,7 +400,7 @@ class ViewController: UIViewController {
         
         if currentlySelectedTypeButton == guestButton {
             
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
             
             guard let subtype = currentlySelectedSubType.titleLabel!.text, let guestType = GuestType(rawValue: subtype) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
@@ -414,7 +414,7 @@ class ViewController: UIViewController {
         
         
         if currentlySelectedTypeButton == employeeButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
             
             guard let subtype = currentlySelectedSubType.titleLabel!.text, let employeeType = EmployeeType(rawValue: subtype) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
@@ -426,21 +426,27 @@ class ViewController: UIViewController {
         }
         
         if currentlySelectedTypeButton == vendorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
             
-            let entrantType = VendorType(rawValue: companyTextField.text!)!
-            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
-            
+            guard let company = companyTextField.text, let vendorType = VendorType(rawValue: company) else {
+                displayAlertWithTitle("Error", andMessage: "Invalid Company")
+                return
+            }
+    
+            pass = PassGenerator(entrant: entrant, entrantType: vendorType)
             tryPass(pass)
 
         }
         
         if currentlySelectedTypeButton == contractorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today, associatedCompany: nil)
+            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
             
-            let entrantType = ContractEmployeeType(rawValue: Int(projectNumberTextField.text!)!)!
-            pass = PassGenerator(entrant: entrant, entrantType: entrantType)
+            guard let projectNumber = Int(projectNumberTextField.text!), let contractEmployeeType = ContractEmployeeType(rawValue: projectNumber) else {
+                displayAlertWithTitle("Error", andMessage: "Invalid Project Number")
+                return
+            }
             
+            pass = PassGenerator(entrant: entrant, entrantType: contractEmployeeType)
             tryPass(pass)
           
         }
@@ -471,10 +477,6 @@ class ViewController: UIViewController {
             displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidCity.rawValue)
         } catch PersonalInformationError.InvalidZipCode{
             displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidZipCode.rawValue)
-        } catch PersonalInformationError.InvalidDateOfVisit {
-            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidDateOfVisit.rawValue)
-        } catch PersonalInformationError.InvalidCompany {
-            displayAlertWithTitle("Error", andMessage: PersonalInformationError.InvalidCompany.rawValue)
         } catch let error {
             displayAlertWithTitle("Error", andMessage: "\(error)")
         }
