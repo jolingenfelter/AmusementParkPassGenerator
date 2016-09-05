@@ -15,6 +15,16 @@ class PassViewController: UIViewController {
     var accessGrantedSound: SystemSoundID = 0
     var accessDeniedSound: SystemSoundID = 0
     
+    // Area Testing Labels
+    @IBOutlet weak var kitchenLabel: UILabel!
+    @IBOutlet weak var amusementParkLabel: UILabel!
+    @IBOutlet weak var maintenanceZonesLabel: UILabel!
+    @IBOutlet weak var officesLabel: UILabel!
+    @IBOutlet weak var rideControlLabel: UILabel!
+    
+    @IBOutlet weak var areaTestingStackView: UIStackView!
+
+    
     // Buttons
     @IBOutlet weak var AreaAccessTestButton: UIButton!
     @IBOutlet weak var RideAccessTestButton: UIButton!
@@ -81,7 +91,43 @@ class PassViewController: UIViewController {
     }
 
     @IBAction func swipeForAreaAccess(sender: AnyObject) {
+        areaTestingStackView.hidden = false
         
+        if entrantAreaAccess.amusementArea == true {
+            amusementParkLabel.backgroundColor = UIColor.greenColor()
+        } else {
+            amusementParkLabel.backgroundColor = UIColor.redColor()
+        }
+        
+        if entrantAreaAccess.kitchenAreas == true {
+           kitchenLabel.backgroundColor = UIColor.greenColor()
+        } else {
+            kitchenLabel.backgroundColor = UIColor.redColor()
+        }
+        
+        if entrantAreaAccess.maintenanceAreas == true {
+            maintenanceZonesLabel.backgroundColor = UIColor.greenColor()
+        } else {
+            maintenanceZonesLabel.backgroundColor = UIColor.redColor()
+        }
+        
+        if entrantAreaAccess.officeAreas == true {
+            officesLabel.backgroundColor = UIColor.greenColor()
+        } else {
+            officesLabel.backgroundColor = UIColor.redColor()
+        }
+        
+        if entrantAreaAccess.rideControlAreas == true {
+            rideControlLabel.backgroundColor = UIColor.greenColor()
+        } else {
+            rideControlLabel.backgroundColor = UIColor.redColor()
+        }
+        
+        if entrantAreaAccess.amusementArea == false && entrantAreaAccess.kitchenAreas == false && entrantAreaAccess.maintenanceAreas == false && entrantAreaAccess.officeAreas == false && entrantAreaAccess.rideControlAreas == false {
+            playAccessDeniedSound()
+        } else {
+            playAccessGrantedSound()
+        }
     }
     
     @IBAction func swipeForRideAccess(sender: AnyObject) {
