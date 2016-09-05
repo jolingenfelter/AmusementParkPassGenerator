@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 
 extension Array {
     var shuffle:[Element] {
@@ -23,9 +22,6 @@ extension Array {
 }
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    var accessGrantedSound: SystemSoundID = 0
-    var accessDeniedSound: SystemSoundID = 0
     
     // Buttons
     
@@ -106,10 +102,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Sound effects
-        loadAccessDeniedSound()
-        loadAccessGrantedSound()
-        
         // Colors to highlight and unhighlight type
         buttonPressedPurple = UIColor(red: 151/255.0, green: 114/255.0, blue: 194/255.0, alpha: 1)
         buttonNormalStatePurple = UIColor(red: 129/255.0, green: 98/255.0, blue: 164/255.0, alpha: 1.0)
@@ -128,6 +120,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Initial Setup
         self.initialViewSetup()
         self.setupPickerViews()
+        
+        DOBTextField.placeholder = "MM/DD/YYYY"
     }
     
     // PickerViews
@@ -643,6 +637,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let passVC = self.storyboard?.instantiateViewControllerWithIdentifier("PassViewController") as! PassViewController
         passVC.date = today
         passVC.passType = entrantTypeString
+        passVC.generatedPass = pass
         
         self.presentViewController(passVC, animated: true, completion: nil)
     }
@@ -661,30 +656,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func resetTextFields() {
         for textField in textFieldArray {
-            textField.text = nil
+            if textField == DOBTextField {
+                textField.placeholder = "MM/DD/YYYY"
+            } else {
+                textField.text = nil
+            }
         }
-    }
-    
-    //Sound Effects
-    
-    func loadAccessGrantedSound() {
-        let pathToFile = NSBundle.mainBundle().pathForResource("AccessGranted", ofType: "wav")
-        let soundURL = NSURL(fileURLWithPath: pathToFile!)
-        AudioServicesCreateSystemSoundID(soundURL, &accessGrantedSound)
-    }
-    
-    func loadAccessDeniedSound() {
-        let pathToFile = NSBundle.mainBundle().pathForResource("AccessDenied", ofType: "wav")
-        let soundURL = NSURL(fileURLWithPath: pathToFile!)
-        AudioServicesCreateSystemSoundID(soundURL, &accessDeniedSound)
-    }
-    
-    func playAccessGrantedSound() {
-        AudioServicesPlaySystemSound(accessGrantedSound)
-    }
-    
-    func playAccessDeniedSound() {
-        AudioServicesPlaySystemSound(accessDeniedSound)
     }
 
 }

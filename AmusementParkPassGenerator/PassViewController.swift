@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class PassViewController: UIViewController {
+    
+    // Sound Effects 
+    var accessGrantedSound: SystemSoundID = 0
+    var accessDeniedSound: SystemSoundID = 0
     
     // Buttons
     @IBOutlet weak var AreaAccessTestButton: UIButton!
@@ -27,7 +32,36 @@ class PassViewController: UIViewController {
     var passType = String()
     var date = String()
     
+    var generatedPass: PassGenerator?
+    
+    var entrantDiscount: DiscountAccessType {
+        guard let pass = generatedPass?.entrantType else {
+            return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
+        }
+        
+        return pass.discountAccess()
+    }
+    
+    var entrantRideAccess: RideAccessType {
+        guard let pass = generatedPass?.entrantType else {
+            return RideAccessType(allRides: false, skipLines: false)
+        }
+        
+        return pass.rideAccess()
+    }
+    
+    var entrantAreaAccess: AreaAccessType {
+        guard let pass = generatedPass?.entrantType else {
+            return AreaAccessType(amusementArea: false, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: false, officeAreas: false)
+        }
+        
+        return pass.areaAccess()
+    }
+    
     override func viewDidLoad() {
+        
+        loadAccessDeniedSound()
+        loadAccessGrantedSound()
         
         // Round Corners
         let buttonsArray = [AreaAccessTestButton, RideAccessTestButton, DiscountAccessTestButton, CreateNewPassButton]
@@ -46,4 +80,35 @@ class PassViewController: UIViewController {
         dateLabel.text = date
     }
 
+    @IBAction func swipeForAreaAccess(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func swipeForRideAccess(sender: AnyObject) {
+    }
+    
+    @IBAction func swipeForDiscountAccess(sender: AnyObject) {
+    }
+    
+    //Sound Effects
+    
+    func loadAccessGrantedSound() {
+        let pathToFile = NSBundle.mainBundle().pathForResource("AccessGranted", ofType: "wav")
+        let soundURL = NSURL(fileURLWithPath: pathToFile!)
+        AudioServicesCreateSystemSoundID(soundURL, &accessGrantedSound)
+    }
+    
+    func loadAccessDeniedSound() {
+        let pathToFile = NSBundle.mainBundle().pathForResource("AccessDenied", ofType: "wav")
+        let soundURL = NSURL(fileURLWithPath: pathToFile!)
+        AudioServicesCreateSystemSoundID(soundURL, &accessDeniedSound)
+    }
+    
+    func playAccessGrantedSound() {
+        AudioServicesPlaySystemSound(accessGrantedSound)
+    }
+    
+    func playAccessDeniedSound() {
+        AudioServicesPlaySystemSound(accessDeniedSound)
+    }
 }

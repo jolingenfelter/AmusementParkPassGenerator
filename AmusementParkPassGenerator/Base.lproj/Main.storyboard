@@ -627,6 +627,9 @@
                                         <state key="normal" title="Area Access">
                                             <color key="titleColor" red="0.338364899" green="0.63348416289999998" blue="0.59181753010000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="swipeForAreaAccess:" destination="oId-tD-r6h" eventType="touchUpInside" id="Hhx-CF-xTR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nS9-Yy-ffC">
                                         <rect key="frame" x="197" y="0.0" width="166" height="30"/>
@@ -635,6 +638,9 @@
                                         <state key="normal" title="Ride Access">
                                             <color key="titleColor" red="0.338364899" green="0.63348416289999998" blue="0.59181753010000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="swipeForRideAccess:" destination="oId-tD-r6h" eventType="touchUpInside" id="Gux-yG-fhf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tls-UL-EgD">
                                         <rect key="frame" x="393" y="0.0" width="167" height="30"/>
@@ -643,6 +649,9 @@
                                         <state key="normal" title="Discount Access">
                                             <color key="titleColor" red="0.338364899" green="0.63348416289999998" blue="0.59181753010000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="swipeForDiscountAccess:" destination="oId-tD-r6h" eventType="touchUpInside" id="aCO-5u-Pef"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

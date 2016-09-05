@@ -68,11 +68,11 @@
 			children = (
 				9E950B321D6357BE001A3C3E /* AppDelegate.swift */,
 				9E950B341D6357BE001A3C3E /* ViewController.swift */,
+				9E97DFF61D7C8858007D15E7 /* PassViewController.swift */,
 				9E04F3301D68F60000C2F241 /* AgeAndBirthday.swift */,
 				9E950B7E1D6363C4001A3C3E /* EntrantModel.swift */,
 				9E014B3B1D64C68B000ED26B /* PassGenerator.swift */,
 				9E950B361D6357BE001A3C3E /* Main.storyboard */,
-				9E97DFF61D7C8858007D15E7 /* PassViewController.swift */,
 				9E950B391D6357BE001A3C3E /* Assets.xcassets */,
 				9E950B3B1D6357BE001A3C3E /* LaunchScreen.storyboard */,
 				9E950B3E1D6357BE001A3C3E /* Info.plist */,
