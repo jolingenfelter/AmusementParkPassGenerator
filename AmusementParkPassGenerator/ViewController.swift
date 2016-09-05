@@ -71,6 +71,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var entrant = Person()
     var pass: PassGenerator
+    var entrantTypeString = String()
     
     // Button Highlighting Variables
     
@@ -86,6 +87,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var currentlySelectedSubType = UIButton()
     var previouslySelectedSubType = UIButton()
+    
+    var today = String()
     
     init(blankPass: PassGenerator) {
         self.pass = blankPass
@@ -468,7 +471,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // Generate Pass
     @IBAction func GeneratePass(sender: AnyObject) {
         
-        let today = dateFormatter.stringFromDate(NSDate())
+        today = dateFormatter.stringFromDate(NSDate())
         
         
         if currentlySelectedTypeButton == guestButton {
@@ -480,6 +483,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 return
             }
             
+            entrantTypeString = String(guestType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: guestType)
             tryPass(pass)
             
@@ -494,6 +498,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 return
             }
             
+            entrantTypeString = String(employeeType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: employeeType)
             tryPass(pass)
         }
@@ -505,7 +510,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 displayAlertWithTitle("Error", andMessage: "Invalid Company")
                 return
             }
-    
+            
+            entrantTypeString = String(vendorType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: vendorType)
             tryPass(pass)
 
@@ -519,6 +525,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 return
             }
             
+            entrantTypeString = String(contractEmployeeType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: contractEmployeeType)
             tryPass(pass)
           
@@ -634,6 +641,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func displayPassVC() {
         let passVC = self.storyboard?.instantiateViewControllerWithIdentifier("PassViewController") as! PassViewController
+        passVC.date = today
+        passVC.passType = entrantTypeString
+        
         self.presentViewController(passVC, animated: true, completion: nil)
     }
     

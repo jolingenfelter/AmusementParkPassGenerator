@@ -544,28 +544,39 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceImageAsset" translatesAutoresizingMaskIntoConstraints="NO" id="9lY-Ne-70F">
                                         <rect key="frame" x="24" y="18" width="204" height="170"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOw-wc-HXs">
+                                        <rect key="frame" x="278" y="14" width="200" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="D61-0y-BsQ"/>
+                                            <constraint firstAttribute="width" constant="200" id="G99-RZ-b3n"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PassType" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4g-al-UAw">
+                                        <rect key="frame" x="278" y="59" width="200" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="PjS-UP-rG9"/>
+                                            <constraint firstAttribute="width" constant="200" id="qMW-OB-wSB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="RiU-An-SbT" secondAttribute="height" multiplier="125:58" id="3mB-V0-cMA"/>
+                                    <constraint firstItem="A4g-al-UAw" firstAttribute="top" secondItem="KOw-wc-HXs" secondAttribute="bottom" constant="20" id="3O4-93-PDk"/>
                                     <constraint firstItem="9lY-Ne-70F" firstAttribute="top" secondItem="RiU-An-SbT" secondAttribute="top" constant="18" id="4ch-Hd-EoR"/>
+                                    <constraint firstItem="KOw-wc-HXs" firstAttribute="leading" secondItem="9lY-Ne-70F" secondAttribute="trailing" constant="50" id="9kx-HM-6fj"/>
                                     <constraint firstAttribute="trailing" secondItem="9lY-Ne-70F" secondAttribute="trailing" constant="292" id="IRE-w5-NQG"/>
-                                    <constraint firstAttribute="width" secondItem="RiU-An-SbT" secondAttribute="height" multiplier="560:221" id="cPA-lI-Gye"/>
                                     <constraint firstAttribute="bottom" secondItem="9lY-Ne-70F" secondAttribute="bottom" constant="17" id="eSD-sO-v9X"/>
                                     <constraint firstItem="9lY-Ne-70F" firstAttribute="leading" secondItem="RiU-An-SbT" secondAttribute="leading" constant="24" id="h26-nS-U3X"/>
                                     <constraint firstAttribute="height" constant="205" id="kXn-uC-XSM"/>
-                                    <constraint firstAttribute="height" constant="232" id="kaf-6p-DBs"/>
-                                    <constraint firstAttribute="width" constant="500" id="lFI-SY-OEo"/>
+                                    <constraint firstItem="9lY-Ne-70F" firstAttribute="top" secondItem="KOw-wc-HXs" secondAttribute="bottom" constant="-21" id="q32-Ug-PBe"/>
                                     <constraint firstAttribute="width" constant="520" id="sWU-63-Mgb"/>
+                                    <constraint firstItem="A4g-al-UAw" firstAttribute="centerX" secondItem="KOw-wc-HXs" secondAttribute="centerX" id="uwU-ge-pHX"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3mB-V0-cMA"/>
-                                        <exclude reference="cPA-lI-Gye"/>
-                                        <exclude reference="kaf-6p-DBs"/>
-                                        <exclude reference="lFI-SY-OEo"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQg-Eq-b2O" userLabel="Seperator">
                                 <rect key="frame" x="0.0" y="295" width="600" height="1"/>
@@ -717,8 +728,14 @@
                     </view>
                     <connections>
                         <outlet property="AreaAccessTestButton" destination="e6C-DR-GYg" id="21I-Qd-qEU"/>
+                        <outlet property="CreateNewPassButton" destination="7SA-Mb-GQE" id="OlU-Aw-OOJ"/>
                         <outlet property="DiscountAccessTestButton" destination="tls-UL-EgD" id="dpb-5h-pd3"/>
                         <outlet property="RideAccessTestButton" destination="nS9-Yy-ffC" id="r8O-iA-qG8"/>
+                        <outlet property="dateLabel" destination="KOw-wc-HXs" id="QkL-uj-Pbo"/>
+                        <outlet property="passTypeLabel" destination="A4g-al-UAw" id="UjE-BS-JJ0"/>
+                        <outlet property="passView" destination="RiU-An-SbT" id="qep-Jf-5qS"/>
+                        <outlet property="pictureView" destination="9lY-Ne-70F" id="Kgu-bX-DuR"/>
+                        <outlet property="testAreaView" destination="bDP-ae-FXb" id="ZXk-29-hzZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsP-aN-mYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
