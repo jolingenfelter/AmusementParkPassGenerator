@@ -11,11 +11,15 @@ import Foundation
 
 enum GuestType: String, Entrant {
     
-    case Classic = "Classic"
+    case classic = "Classic"
     case VIP = "VIP"
     case freeChild = "Child"
     case seasonPass = "Season Pass"
     case seniorGuest = "Senior"
+    
+    static var entrantType: EntrantType {
+        return EntrantType.guest
+    }
     
     func areaAccess() -> AreaAccessType {
         return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: false, officeAreas: false)

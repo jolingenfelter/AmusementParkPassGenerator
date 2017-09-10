@@ -10,27 +10,31 @@ import Foundation
 
 enum EmployeeType: String, Entrant {
     
-    case FoodServices = "Food Services"
-    case RideServices = "Ride Services"
-    case Maintenance = "Maintenance"
-    case Manager = "Manager"
+    case foodServices = "Food Services"
+    case rideServices = "Ride Services"
+    case maintenance = "Maintenance"
+    case manager = "Manager"
+    
+    var entrantType: EntrantType {
+        return EntrantType.employee
+    }
     
     func areaAccess() -> AreaAccessType {
         switch self {
-        case .FoodServices:
+        case .foodServices:
             return AreaAccessType(amusementArea: true, kitchenAreas: true, rideControlAreas: false, maintenanceAreas: false, officeAreas: false)
-        case .RideServices:
+        case .rideServices:
             return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: true, maintenanceAreas: false, officeAreas: false)
-        case .Maintenance:
+        case .maintenance:
             return AreaAccessType(amusementArea: true, kitchenAreas: true, rideControlAreas: true, maintenanceAreas: true, officeAreas: true)
-        case .Manager:
+        case .manager:
             return AreaAccessType(amusementArea: true, kitchenAreas: true, rideControlAreas: true, maintenanceAreas: true, officeAreas: true)
         }
     }
     
     func discountAccess() -> DiscountAccessType {
         switch self {
-        case .Manager:
+        case .manager:
             return DiscountAccessType(foodDiscount: 25, merchandiseDiscount: 25)
         default:
             return DiscountAccessType(foodDiscount: 15, merchandiseDiscount: 25)

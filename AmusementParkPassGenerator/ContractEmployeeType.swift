@@ -8,13 +8,17 @@
 
 import Foundation
 
-enum ContractEmployeeType: Int, Entrant {
+enum ContractEmployeeType: String, Entrant {
     
-    case a = 1001
-    case b = 1002
-    case c = 1003
-    case d = 2001
-    case e = 2002
+    case a = "1001"
+    case b = "1002"
+    case c = "1003"
+    case d = "2001"
+    case e = "2002"
+    
+    static var entrantType: EntrantType {
+        return EntrantType.contractEmployee
+    }
     
     func areaAccess() -> AreaAccessType {
         switch self {

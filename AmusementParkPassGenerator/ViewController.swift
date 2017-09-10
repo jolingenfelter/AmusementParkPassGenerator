@@ -63,20 +63,26 @@ class ViewController: UIViewController {
     var currentlySelectedTypeButton = UIButton()
     var previouslySelectedTypeButton = UIButton()
     
+    var selectedType: EntrantType
+    
     var buttonPressedPurple = UIColor()
     var buttonNormalStatePurple = UIColor()
     
     var secondRowButtonsArray = [UIButton]()
     
-    var currentlySelectedSubType = UIButton()
-    var previouslySelectedSubType = UIButton()
+    var currentlySelectedSubTypeButton = UIButton()
+    var previouslySelectedSubTypeButton = UIButton()
+    
+    var selectedSubType: String
     
     var today = String()
     
     
     required init?(coder aDecoder: NSCoder) {
         let person = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: nil, dateOfVisit: nil)
-        self.pass = PassGenerator(entrant: person, entrantType: GuestType.Classic)
+        self.pass = PassGenerator(entrant: person, entrantType: GuestType.classic)
+        selectedType = GuestType.entrantType
+        selectedSubType = GuestType.classic.rawValue
         super.init(coder: aDecoder)
     }
     
@@ -129,6 +135,7 @@ class ViewController: UIViewController {
             switchHighlight(guestButton)
             setSecondRowButtons(guestButton)
             enableTextFields(false)
+            selectedType = EntrantType.guest
             deselectSubtype()
             resetTextFields()
     
@@ -136,6 +143,7 @@ class ViewController: UIViewController {
             switchHighlight(employeeButton)
             setSecondRowButtons(employeeButton)
             enableTextFields(false)
+            selectedType = EntrantType.employee
             deselectSubtype()
             resetTextFields()
         
@@ -143,6 +151,7 @@ class ViewController: UIViewController {
             switchHighlight(contractorButton)
             setSecondRowButtons(contractorButton)
             enableTextFields(true)
+            selectedType = EntrantType.contractEmployee
             companyTextField.isEnabled = false
             companyTextField.backgroundColor = UIColor.clear
             resetTextFields()
@@ -151,6 +160,7 @@ class ViewController: UIViewController {
             switchHighlight(vendorButton)
             setSecondRowButtons(vendorButton)
             enableTextFields(true)
+            selectedType = EntrantType.vendor
             projectNumberTextField.isEnabled = false
             projectNumberTextField.backgroundColor = UIColor.clear
             SSNTextField.isEnabled = false
@@ -171,49 +181,58 @@ class ViewController: UIViewController {
             // Guest
             case GuestType.freeChild.rawValue :
                 highlightSubtype(r2b1)
+                selectedSubType = GuestType.freeChild.rawValue
                 childSettings()
                 resetTextFields()
           
-            case GuestType.Classic.rawValue :
+            case GuestType.classic.rawValue :
                 highlightSubtype(r2b2)
+                selectedSubType = GuestType.classic.rawValue
                 enableTextFields(false)
                 resetTextFields()
         
             
             case GuestType.seniorGuest.rawValue :
                 highlightSubtype(r2b3)
+                selectedSubType = GuestType.seniorGuest.rawValue
                 seniorSettings()
                 resetTextFields()
             
             case GuestType.seasonPass.rawValue:
                 highlightSubtype(r2b4)
+                selectedSubType = GuestType.seasonPass.rawValue
                 seasonPassSettings()
                 resetTextFields()
            
         
             case GuestType.VIP.rawValue:
                 highlightSubtype(r2b5)
+                selectedSubType = GuestType.VIP.rawValue
                 enableTextFields(false)
                 resetTextFields()
             
             // Employee
-            case EmployeeType.FoodServices.rawValue:
+            case EmployeeType.foodServices.rawValue:
                 highlightSubtype(r2b1)
+                selectedSubType = EmployeeType.foodServices.rawValue
                 employeeSettings()
                 resetTextFields()
             
-            case EmployeeType.RideServices.rawValue:
+            case EmployeeType.rideServices.rawValue:
                 highlightSubtype(r2b2)
+                selectedSubType = EmployeeType.rideServices.rawValue
                 employeeSettings()
                 resetTextFields()
         
-            case EmployeeType.Maintenance.rawValue:
+            case EmployeeType.maintenance.rawValue:
                 highlightSubtype(r2b3)
+                selectedSubType = EmployeeType.maintenance.rawValue
                 employeeSettings()
                 resetTextFields()
 
-            case EmployeeType.Manager.rawValue:
+            case EmployeeType.manager.rawValue:
                 highlightSubtype(r2b4)
+                selectedSubType = EmployeeType.manager.rawValue
                 employeeSettings()
                 resetTextFields()
             
@@ -331,17 +350,17 @@ class ViewController: UIViewController {
     // Button helper methods
     
     func highlightSubtype(_ button: UIButton) {
-        previouslySelectedSubType = currentlySelectedSubType
-        previouslySelectedSubType.isSelected = false
-        currentlySelectedSubType = button
-        currentlySelectedSubType.isSelected = true
+        previouslySelectedSubTypeButton = currentlySelectedSubTypeButton
+        previouslySelectedSubTypeButton.isSelected = false
+        currentlySelectedSubTypeButton = button
+        currentlySelectedSubTypeButton.isSelected = true
     }
     
     func setSecondRowButtons(_ button: UIButton) {
         switch button {
             case guestButton :
                 r2b1.setTitle(GuestType.freeChild.rawValue, for: UIControlState())
-                r2b2.setTitle(GuestType.Classic.rawValue, for: UIControlState())
+                r2b2.setTitle(GuestType.classic.rawValue, for: UIControlState())
                 r2b3.setTitle(GuestType.seniorGuest.rawValue, for: UIControlState())
                 r2b4.setTitle(GuestType.seasonPass.rawValue, for: UIControlState())
                 r2b5.setTitle(GuestType.VIP.rawValue, for: UIControlState())
@@ -351,10 +370,10 @@ class ViewController: UIViewController {
                 secondRowButtonsStackView.isHidden = false
             
             case employeeButton :
-                r2b1.setTitle(EmployeeType.FoodServices.rawValue, for: UIControlState())
-                r2b2.setTitle(EmployeeType.RideServices.rawValue, for: UIControlState())
-                r2b3.setTitle(EmployeeType.Maintenance.rawValue, for: UIControlState())
-                r2b4.setTitle(EmployeeType.Manager.rawValue, for: UIControlState())
+                r2b1.setTitle(EmployeeType.foodServices.rawValue, for: UIControlState())
+                r2b2.setTitle(EmployeeType.rideServices.rawValue, for: UIControlState())
+                r2b3.setTitle(EmployeeType.maintenance.rawValue, for: UIControlState())
+                r2b4.setTitle(EmployeeType.manager.rawValue, for: UIControlState())
                 
                 r2b5.isHidden = true
                 secondRowButtonsStackView.removeArrangedSubview(r2b5)
@@ -393,12 +412,21 @@ class ViewController: UIViewController {
         
         today = dateFormatter.string(from: Date())
         
+        let firstName = firstNameTextField.text
+        let lastName = lastNameTextField.text
+        let address = streetAddressTextField.text
+        let city = cityTextField.text
+        let state = stateTextField.text
+        let zipCode = zipCodeTextField.text
+        let SSN = SSNTextField.text
+        let DOB = DOBTextField.text
         
-        if currentlySelectedTypeButton == guestButton {
+        entrant = Person(firstName: firstName, lastName: lastName, address: address, city: city, state: state, zipCode: Int(zipCode!), SSN: Int(SSN!), DOB: DOB, dateOfVisit: today)
+        
+        
+        if selectedType == EntrantType.guest {
             
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
-            
-            guard let subtype = currentlySelectedSubType.titleLabel!.text, let guestType = GuestType(rawValue: subtype) else {
+            guard let guestType = GuestType(rawValue: selectedSubType) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
                 return
             }
@@ -410,10 +438,9 @@ class ViewController: UIViewController {
         }
         
         
-        if currentlySelectedTypeButton == employeeButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
+        if selectedType == EntrantType.employee {
             
-            guard let subtype = currentlySelectedSubType.titleLabel!.text, let employeeType = EmployeeType(rawValue: subtype) else {
+            guard let employeeType = EmployeeType(rawValue: selectedSubType) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
                 return
             }
@@ -423,9 +450,8 @@ class ViewController: UIViewController {
             tryPass(pass)
         }
         
-        if currentlySelectedTypeButton == vendorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
-            
+        if selectedType == EntrantType.vendor {
+
             guard let company = companyTextField.text, let vendorType = VendorType(rawValue: company) else {
                 displayAlertWithTitle("Error", andMessage: "Invalid Company")
                 return
@@ -437,10 +463,9 @@ class ViewController: UIViewController {
 
         }
         
-        if currentlySelectedTypeButton == contractorButton {
-            entrant = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: streetAddressTextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: Int(zipCodeTextField.text!), SSN: Int(SSNTextField.text!), DOB: DOBTextField.text, dateOfVisit: today)
+        if selectedType == EntrantType.contractEmployee {
             
-            guard let projectNumber = Int(projectNumberTextField.text!), let contractEmployeeType = ContractEmployeeType(rawValue: projectNumber) else {
+            guard let projectNumber = projectNumberTextField.text, let contractEmployeeType = ContractEmployeeType(rawValue: projectNumber) else {
                 displayAlertWithTitle("Error", andMessage: "Invalid Project Number")
                 return
             }
@@ -487,11 +512,11 @@ class ViewController: UIViewController {
     
     @IBAction func PopulateData(_ sender: AnyObject) {
         
-        if currentlySelectedTypeButton == guestButton && currentlySelectedSubType == r2b1 {
+        if currentlySelectedTypeButton == guestButton && currentlySelectedSubTypeButton == r2b1 {
             DOBTextField.text = "1/1/2015"
         }
         
-        if currentlySelectedTypeButton == guestButton && currentlySelectedSubType == r2b3 {
+        if currentlySelectedTypeButton == guestButton && currentlySelectedSubTypeButton == r2b3 {
             DOBTextField.text = "1/1/1940"
             
             firstNameTextField.text = "Johnny"
@@ -499,7 +524,7 @@ class ViewController: UIViewController {
 
         }
         
-        if currentlySelectedTypeButton == guestButton && currentlySelectedSubType == r2b4 {
+        if currentlySelectedTypeButton == guestButton && currentlySelectedSubTypeButton == r2b4 {
 
             firstNameTextField.text = "Johnny"
             lastNameTextField.text = "Rocket"

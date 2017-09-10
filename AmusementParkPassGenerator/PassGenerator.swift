@@ -48,10 +48,10 @@ class PassGenerator {
             let entrantAge = try calculateAge(self.entrant)
             
             if entrantAge < 65 {
-                self.entrantType = GuestType.Classic
+                self.entrantType = GuestType.classic
             }
         
-        case GuestType.Classic, GuestType.VIP:
+        case GuestType.classic, GuestType.VIP:
             print("No information necessary")
         
         case is EmployeeType, is ContractEmployeeType:
