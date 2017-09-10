@@ -25,7 +25,7 @@
 		9EF77CFD1F65858C00726134 /* AccessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77CFC1F65858C00726134 /* AccessType.swift */; };
 		9EF77CFF1F6585E300726134 /* RideAccessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77CFE1F6585E300726134 /* RideAccessType.swift */; };
 		9EF77D011F65860E00726134 /* DiscountAccessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D001F65860E00726134 /* DiscountAccessType.swift */; };
-		9EF77D031F65862700726134 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D021F65862700726134 /* PersonalInformation.swift */; };
+		9EF77D031F65862700726134 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D021F65862700726134 /* Person.swift */; };
 		9EF77D051F65865500726134 /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D041F65865500726134 /* VendorType.swift */; };
 		9EF77D071F65867200726134 /* ContractEmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D061F65867200726134 /* ContractEmployeeType.swift */; };
 		9EF77D0C1F65887E00726134 /* SoundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D0B1F65887E00726134 /* SoundCoordinator.swift */; };
@@ -54,7 +54,7 @@
 		9EF77CFC1F65858C00726134 /* AccessType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessType.swift; sourceTree = "<group>"; };
 		9EF77CFE1F6585E300726134 /* RideAccessType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideAccessType.swift; sourceTree = "<group>"; };
 		9EF77D001F65860E00726134 /* DiscountAccessType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountAccessType.swift; sourceTree = "<group>"; };
-		9EF77D021F65862700726134 /* PersonalInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformation.swift; sourceTree = "<group>"; };
+		9EF77D021F65862700726134 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		9EF77D041F65865500726134 /* VendorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorType.swift; sourceTree = "<group>"; };
 		9EF77D061F65867200726134 /* ContractEmployeeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractEmployeeType.swift; sourceTree = "<group>"; };
 		9EF77D0B1F65887E00726134 /* SoundCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCoordinator.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 				9EF77CFC1F65858C00726134 /* AccessType.swift */,
 				9EF77D001F65860E00726134 /* DiscountAccessType.swift */,
 				9EF77CFE1F6585E300726134 /* RideAccessType.swift */,
-				9EF77D021F65862700726134 /* PersonalInformation.swift */,
+				9EF77D021F65862700726134 /* Person.swift */,
 				9EF77CF61F65851800726134 /* PersonalInformationError.swift */,
 				9EF77CF81F65853200726134 /* EmployeeType.swift */,
 				9EF77D041F65865500726134 /* VendorType.swift */,
@@ -227,7 +227,7 @@
 				9E97DFF71D7C8858007D15E7 /* PassViewController.swift in Sources */,
 				9EF77D071F65867200726134 /* ContractEmployeeType.swift in Sources */,
 				9EF77CFD1F65858C00726134 /* AccessType.swift in Sources */,
-				9EF77D031F65862700726134 /* PersonalInformation.swift in Sources */,
+				9EF77D031F65862700726134 /* Person.swift in Sources */,
 				9EF77D121F658E6700726134 /* EntrantType.swift in Sources */,
 				9EF77D051F65865500726134 /* VendorType.swift in Sources */,
 				9EF77D011F65860E00726134 /* DiscountAccessType.swift in Sources */,

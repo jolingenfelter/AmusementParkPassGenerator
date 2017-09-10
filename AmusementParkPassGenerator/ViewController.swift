@@ -44,8 +44,10 @@ class ViewController: UIViewController {
     
     var textFieldArray = [UITextField]()
     
+    var today: String = ""
+    
     // Picker Views
-    var companiesArray = [VendorType.ACME.rawValue, VendorType.Orkin.rawValue, VendorType.Fedex.rawValue, VendorType.NWElectrical.rawValue]
+    var companiesArray = [String]()
     var projectNumbersArray = [String]()
     var companyPicker = UIPickerView()
     var projectNumberPicker = UIPickerView()
@@ -75,11 +77,68 @@ class ViewController: UIViewController {
     
     var selectedSubType: String
     
-    var today = String()
+    var person: Person {
+        
+        willSet {
+            
+            set(textField: companyTextField, enabled: false)
+            set(textField: projectNumberTextField, enabled: false)
+            
+            let newPerson = newValue
+            
+            if newPerson.DOB == nil {
+                set(textField: DOBTextField, enabled: false)
+            } else {
+                set(textField: DOBTextField, enabled: true)
+            }
+            
+            if newPerson.SSN == nil {
+                set(textField: SSNTextField, enabled: false)
+            } else {
+                set(textField: SSNTextField, enabled: true)
+            }
+            
+            if newPerson.firstName == nil {
+                set(textField: firstNameTextField, enabled: false)
+            } else {
+                set(textField: firstNameTextField, enabled: true)
+            }
+            
+            if newPerson.lastName == nil {
+                set(textField: lastNameTextField, enabled: false)
+            } else {
+                set(textField: lastNameTextField, enabled: true)
+            }
+            
+            if newPerson.address == nil {
+                set(textField: streetAddressTextField, enabled: false)
+            } else {
+                set(textField: streetAddressTextField, enabled: true)
+            }
+            
+            if newPerson.city == nil {
+                set(textField: cityTextField, enabled: false)
+            } else {
+                set(textField: cityTextField, enabled: true)
+            }
+            
+            if newPerson.state == nil {
+                set(textField: stateTextField, enabled: false)
+            } else {
+                set(textField: stateTextField, enabled: true)
+            }
+            
+            if newPerson.zipCode == nil {
+                set(textField: zipCodeTextField, enabled: false)
+            } else {
+                set(textField: zipCodeTextField, enabled: true)
+            }
+        }
+    }
     
     
     required init?(coder aDecoder: NSCoder) {
-        let person = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: nil, dateOfVisit: nil)
+        person = GuestType.classic.testCase
         self.pass = PassGenerator(entrant: person, entrantType: GuestType.classic)
         selectedType = GuestType.entrantType
         selectedSubType = GuestType.classic.rawValue
@@ -137,7 +196,6 @@ class ViewController: UIViewController {
             enableTextFields(false)
             selectedType = EntrantType.guest
             deselectSubtype()
-            resetTextFields()
     
         case 2:
             switchHighlight(employeeButton)
@@ -145,27 +203,20 @@ class ViewController: UIViewController {
             enableTextFields(false)
             selectedType = EntrantType.employee
             deselectSubtype()
-            resetTextFields()
         
         case 3:
             switchHighlight(contractorButton)
             setSecondRowButtons(contractorButton)
-            enableTextFields(true)
             selectedType = EntrantType.contractEmployee
-            companyTextField.isEnabled = false
-            companyTextField.backgroundColor = UIColor.clear
-            resetTextFields()
+            person = ContractEmployeeType.testCase
+            set(textField: projectNumberTextField, enabled: true)
         
         case 4:
             switchHighlight(vendorButton)
             setSecondRowButtons(vendorButton)
-            enableTextFields(true)
             selectedType = EntrantType.vendor
-            projectNumberTextField.isEnabled = false
-            projectNumberTextField.backgroundColor = UIColor.clear
-            SSNTextField.isEnabled = false
-            SSNTextField.backgroundColor = UIColor.clear
-            resetTextFields()
+            person = VendorType.testCase
+            set(textField: companyTextField, enabled: true)
         
         default: break
         
@@ -182,59 +233,50 @@ class ViewController: UIViewController {
             case GuestType.freeChild.rawValue :
                 highlightSubtype(r2b1)
                 selectedSubType = GuestType.freeChild.rawValue
-                childSettings()
-                resetTextFields()
+                person = GuestType.freeChild.testCase
           
             case GuestType.classic.rawValue :
                 highlightSubtype(r2b2)
                 selectedSubType = GuestType.classic.rawValue
-                enableTextFields(false)
-                resetTextFields()
+                person = GuestType.classic.testCase
         
             
             case GuestType.seniorGuest.rawValue :
                 highlightSubtype(r2b3)
                 selectedSubType = GuestType.seniorGuest.rawValue
-                seniorSettings()
-                resetTextFields()
+                person = GuestType.seniorGuest.testCase
             
             case GuestType.seasonPass.rawValue:
                 highlightSubtype(r2b4)
                 selectedSubType = GuestType.seasonPass.rawValue
-                seasonPassSettings()
-                resetTextFields()
+                person = GuestType.seasonPass.testCase
            
         
             case GuestType.VIP.rawValue:
                 highlightSubtype(r2b5)
                 selectedSubType = GuestType.VIP.rawValue
-                enableTextFields(false)
-                resetTextFields()
+                person = GuestType.VIP.testCase
             
             // Employee
             case EmployeeType.foodServices.rawValue:
                 highlightSubtype(r2b1)
                 selectedSubType = EmployeeType.foodServices.rawValue
-                employeeSettings()
-                resetTextFields()
+                person = EmployeeType.testCase
             
             case EmployeeType.rideServices.rawValue:
                 highlightSubtype(r2b2)
                 selectedSubType = EmployeeType.rideServices.rawValue
-                employeeSettings()
-                resetTextFields()
+                person = EmployeeType.testCase
         
             case EmployeeType.maintenance.rawValue:
                 highlightSubtype(r2b3)
                 selectedSubType = EmployeeType.maintenance.rawValue
-                employeeSettings()
-                resetTextFields()
+                person = EmployeeType.testCase
 
             case EmployeeType.manager.rawValue:
                 highlightSubtype(r2b4)
                 selectedSubType = EmployeeType.manager.rawValue
-                employeeSettings()
-                resetTextFields()
+                person = EmployeeType.testCase
             
             default: break
             
@@ -242,108 +284,30 @@ class ViewController: UIViewController {
         }
     }
     
-    func employeeSettings() {
-        enableTextFields(true)
-        
-        DOBTextField.isEnabled = true
-        SSNTextField.isEnabled = true
-        
-        projectNumberTextField.isEnabled = false
-        projectNumberTextField.backgroundColor = UIColor.clear
-        
-        firstNameTextField.isEnabled = true
-        lastNameTextField.isEnabled = true
-        
-        companyTextField.isEnabled = false
-        companyTextField.backgroundColor = UIColor.clear
-        
-        streetAddressTextField.isEnabled = true
-        cityTextField.isEnabled = true
-        stateTextField.isEnabled = true
-        zipCodeTextField.isEnabled = true
-        
-    }
-    
-    // TextField Settings
-    
-    func seasonPassSettings() {
-        enableTextFields(true)
-        
-        DOBTextField.isEnabled = false
-        DOBTextField.backgroundColor = UIColor.clear
-        
-        SSNTextField.isEnabled = false
-        SSNTextField.backgroundColor = UIColor.clear
-        
-        projectNumberTextField.isEnabled = false
-        projectNumberTextField.backgroundColor = UIColor.clear
-        
-        firstNameTextField.isEnabled = true
-        lastNameTextField.isEnabled = true
-        
-        companyTextField.isEnabled = false
-        companyTextField.backgroundColor = UIColor.clear
-        
-        streetAddressTextField.isEnabled = true
-        cityTextField.isEnabled = true
-        stateTextField.isEnabled = true
-        zipCodeTextField.isEnabled = true
-        
-    }
-    
-    func seniorSettings() {
-        enableTextFields(true)
-        
-        DOBTextField.isEnabled = true
-        
-        SSNTextField.isEnabled = false
-        SSNTextField.backgroundColor = UIColor.clear
-        
-        projectNumberTextField.isEnabled = false
-        projectNumberTextField.backgroundColor = UIColor.clear
-        
-        firstNameTextField.isEnabled = true
-        lastNameTextField.isEnabled = true
-        
-        companyTextField.isEnabled = false
-        companyTextField.backgroundColor = UIColor.clear
-        
-        streetAddressTextField.isEnabled = false
-        streetAddressTextField.backgroundColor = UIColor.clear
-        
-        cityTextField.isEnabled = false
-        cityTextField.backgroundColor = UIColor.clear
-        
-        stateTextField.isEnabled = false
-        stateTextField.backgroundColor = UIColor.clear
-        
-        zipCodeTextField.isEnabled = false
-        zipCodeTextField.backgroundColor = UIColor.clear
-        
-    }
-    
-    func childSettings() {
-        enableTextFields(true)
-        for textField in textFieldArray {
-            if textField != DOBTextField {
-                textField.isEnabled = false
-                textField.backgroundColor = UIColor.clear
-            } else {
-                textField.isEnabled = true
-            }
-        }
-    }
-    
-    func enableTextFields(_ isEnabled: Bool) {
+      func enableTextFields(_ isEnabled: Bool) {
         for textField in textFieldArray {
             if isEnabled == false {
                 textField.isEnabled = false
                 textField.backgroundColor = UIColor.clear
+                textField.text = ""
             } else {
                 textField.isEnabled = true
                 textField.backgroundColor = UIColor.white
             }
         }
+    }
+    
+    func set(textField: UITextField, enabled: Bool) {
+        
+        textField.isEnabled = enabled
+        
+        if textField.isEnabled {
+            textField.backgroundColor = .white
+        } else {
+            textField.backgroundColor = .clear
+            textField.text = ""
+        }
+        
     }
 
     
@@ -485,7 +449,6 @@ class ViewController: UIViewController {
         do {
             
             try pass.checkForCorrectData()
-            pass.printData()
             displayPassVC()
             
         } catch PersonalInformationError.InvalidDOB {
@@ -512,72 +475,7 @@ class ViewController: UIViewController {
     
     @IBAction func PopulateData(_ sender: AnyObject) {
         
-        if currentlySelectedTypeButton == guestButton && currentlySelectedSubTypeButton == r2b1 {
-            DOBTextField.text = "1/1/2015"
-        }
-        
-        if currentlySelectedTypeButton == guestButton && currentlySelectedSubTypeButton == r2b3 {
-            DOBTextField.text = "1/1/1940"
-            
-            firstNameTextField.text = "Johnny"
-            lastNameTextField.text = "Rocket"
-
-        }
-        
-        if currentlySelectedTypeButton == guestButton && currentlySelectedSubTypeButton == r2b4 {
-
-            firstNameTextField.text = "Johnny"
-            lastNameTextField.text = "Rocket"
-            
-            streetAddressTextField.text = "5028 Bennington Ct"
-            cityTextField.text = "Colorado Springs"
-            stateTextField.text = "CO"
-            zipCodeTextField.text = "48116"
-        }
-        
-        if currentlySelectedTypeButton == employeeButton {
-            
-            DOBTextField.text = "1/1/1990"
-            SSNTextField.text = "111223333"
-            
-            firstNameTextField.text = "Johnny"
-            lastNameTextField.text = "Rocket"
-            
-            streetAddressTextField.text = "5028 Bennington Ct"
-            cityTextField.text = "Colorado Springs"
-            stateTextField.text = "CO"
-            zipCodeTextField.text = "48116"
-            
-        }
-        
-        if currentlySelectedTypeButton == vendorButton {
-            DOBTextField.text = "1/1/1990"
-            
-            firstNameTextField.text = "Johnny"
-            lastNameTextField.text = "Rocket"
-    
-            companyTextField.text = (companiesArray.shuffle)[0]
-            
-            streetAddressTextField.text = "5028 Bennington Ct"
-            cityTextField.text = "Colorado Springs"
-            stateTextField.text = "CO"
-            zipCodeTextField.text = "48116"
-        }
-        
-        if currentlySelectedTypeButton == contractorButton {
-            DOBTextField.text = "1/1/1990"
-            SSNTextField.text = "111223333"
-            
-            firstNameTextField.text = "Johnny"
-            lastNameTextField.text = "Rocket"
-            
-            projectNumberTextField.text = (projectNumbersArray.shuffle)[0]
-            
-            streetAddressTextField.text = "5028 Bennington Ct"
-            cityTextField.text = "Colorado Springs"
-            stateTextField.text = "CO"
-            zipCodeTextField.text = "48116"
-        }
+        populateData()
         
     }
     
@@ -592,18 +490,10 @@ class ViewController: UIViewController {
         
         self.present(passVC, animated: true, completion: nil)
     }
-    
-    // Helper Methods
-    
-    func resetTextFields() {
-        for textField in textFieldArray {
-                textField.text = nil
-        }
-    }
 
 }
 
-// PickerView
+// MARK: - PickerView DataSouce and Delegate
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -657,7 +547,83 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             projectNumberTextField.text = projectNumbersArray[row]
         }
     }
-
     
+}
+
+// MARK: - Data Population
+
+extension ViewController {
+    
+    func populateData() {
+        if selectedType == GuestType.entrantType {
+            
+            if selectedSubType == GuestType.freeChild.rawValue {
+                DOBTextField.text = GuestType.freeChild.testCase.DOB
+            }
+            
+            if selectedSubType == GuestType.seniorGuest.rawValue {
+                DOBTextField.text = GuestType.seniorGuest.testCase.DOB
+            }
+            
+            if selectedSubType == GuestType.seasonPass.rawValue {
+                
+                firstNameTextField.text = GuestType.seasonPass.testCase.firstName
+                lastNameTextField.text = GuestType.seasonPass.testCase.lastName
+                
+                streetAddressTextField.text = GuestType.seasonPass.testCase.address
+                cityTextField.text = GuestType.seasonPass.testCase.city
+                stateTextField.text = GuestType.seasonPass.testCase.state
+                zipCodeTextField.text = String(describing: GuestType.seasonPass.testCase.zipCode!)
+                
+            }
+            
+        }
+        
+        if selectedType == EmployeeType.entrantType {
+            
+            DOBTextField.text = EmployeeType.testCase.DOB
+            SSNTextField.text = String(describing: EmployeeType.testCase.SSN!)
+            
+            firstNameTextField.text = EmployeeType.testCase.firstName
+            lastNameTextField.text = EmployeeType.testCase.lastName
+            
+            streetAddressTextField.text = EmployeeType.testCase.address
+            cityTextField.text = EmployeeType.testCase.city
+            stateTextField.text = EmployeeType.testCase.state
+            zipCodeTextField.text = String(describing: EmployeeType.testCase.zipCode!)
+            
+        }
+        
+        if selectedType == VendorType.entrantType {
+            
+            DOBTextField.text = VendorType.testCase.DOB
+            
+            firstNameTextField.text = VendorType.testCase.firstName
+            lastNameTextField.text = VendorType.testCase.lastName
+            
+            companyTextField.text = (companiesArray.shuffle)[0]
+            
+            streetAddressTextField.text = VendorType.testCase.address
+            cityTextField.text = VendorType.testCase.city
+            stateTextField.text = VendorType.testCase.state
+            zipCodeTextField.text = String(describing: VendorType.testCase.zipCode!)
+        }
+        
+        if selectedType == ContractEmployeeType.entrantType {
+            DOBTextField.text = ContractEmployeeType.testCase.DOB
+            SSNTextField.text = String(describing: ContractEmployeeType.testCase.SSN!)
+            
+            firstNameTextField.text = ContractEmployeeType.testCase.firstName
+            lastNameTextField.text = ContractEmployeeType.testCase.lastName
+            
+            projectNumberTextField.text = (projectNumbersArray.shuffle)[0]
+            
+            streetAddressTextField.text = ContractEmployeeType.testCase.address
+            cityTextField.text = ContractEmployeeType.testCase.city
+            stateTextField.text = ContractEmployeeType.testCase.state
+            zipCodeTextField.text = String(describing: ContractEmployeeType.testCase.zipCode!)
+        }
+
+    }
 }
 

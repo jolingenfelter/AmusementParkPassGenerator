@@ -15,7 +15,7 @@ enum EmployeeType: String, Entrant {
     case maintenance = "Maintenance"
     case manager = "Manager"
     
-    var entrantType: EntrantType {
+    static var entrantType: EntrantType {
         return EntrantType.employee
     }
     
@@ -43,6 +43,10 @@ enum EmployeeType: String, Entrant {
     
     func rideAccess() -> RideAccessType {
         return RideAccessType(allRides: true, skipLines: false)
+    }
+    
+    static var testCase: Person {
+        return Person(firstName: "Johnny", lastName: "Rocket", address: "555 Somewhere Rd", city: "City", state: "State", zipCode: 55555, SSN: 1112223333, DOB: "1/1/1990", dateOfVisit: "1/1/2017")
     }
 }
 

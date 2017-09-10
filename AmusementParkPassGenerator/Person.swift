@@ -1,5 +1,5 @@
 //
-//  PersonalInformation.swift
+//  Person.swift
 //  AmusementParkPassGenerator.xcodeproject
 //
 //  Created by Joanna Lingenfelter on 9/10/17.
@@ -9,6 +9,7 @@
 import Foundation
 
 struct Person {
+    
     var firstName: String?
     var lastName: String?
     var address: String?
@@ -18,4 +19,5 @@ struct Person {
     var SSN: Int?
     var DOB: String?
     var dateOfVisit: String?
+    
 }

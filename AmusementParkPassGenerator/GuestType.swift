@@ -44,4 +44,18 @@ enum GuestType: String, Entrant {
             return RideAccessType(allRides: true, skipLines: false)
         }
     }
+    
+    var testCase: Person {
+        
+        switch self {
+        case .freeChild:
+            return Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: "9/10/2017", dateOfVisit: nil)
+        case .seniorGuest:
+            return Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: "1/1/1900", dateOfVisit: nil)
+        case .seasonPass:
+            return Person(firstName: "Johnny", lastName: "Rocket", address: "555 Somewhere Rd", city: "City", state: "State", zipCode: nil, SSN: nil, DOB: "1/1/1990", dateOfVisit: "1/1/2017")
+        default:
+            return Person()
+        }
+    }
 }

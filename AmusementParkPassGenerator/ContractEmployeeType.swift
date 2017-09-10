@@ -42,4 +42,8 @@ enum ContractEmployeeType: String, Entrant {
     func rideAccess() -> RideAccessType {
         return RideAccessType(allRides: false, skipLines: false)
     }
+    
+    static var testCase: Person {
+        return Person(firstName: "Johnny", lastName: "Rocket", address: "555 Somewhere Rd", city: "City", state: "State", zipCode: 55555, SSN: 1112223333, DOB: "1/1/1990", dateOfVisit: "1/1/2017")
+    }
 }
