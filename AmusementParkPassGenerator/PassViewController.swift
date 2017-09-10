@@ -11,10 +11,6 @@ import AudioToolbox
 
 class PassViewController: UIViewController {
     
-    // Sound Effects 
-    var accessGrantedSound: SystemSoundID = 0
-    var accessDeniedSound: SystemSoundID = 0
-    
     // Area Testing Labels
     @IBOutlet weak var kitchenLabel: UILabel!
     @IBOutlet weak var amusementParkLabel: UILabel!
@@ -46,6 +42,9 @@ class PassViewController: UIViewController {
     @IBOutlet weak var passTypeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    // SoundEffects
+    let soundCoordinator = SoundCoordinator()
+    
     var passType = String()
     var date = String()
     
@@ -76,9 +75,6 @@ class PassViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
-        loadAccessDeniedSound()
-        loadAccessGrantedSound()
         
         // Round Corners
         let buttonsArray = [AreaAccessTestButton, RideAccessTestButton, DiscountAccessTestButton, CreateNewPassButton]
@@ -131,67 +127,46 @@ class PassViewController: UIViewController {
         }
         
         if entrantAreaAccess.amusementArea == false && entrantAreaAccess.kitchenAreas == false && entrantAreaAccess.maintenanceAreas == false && entrantAreaAccess.officeAreas == false && entrantAreaAccess.rideControlAreas == false {
-            playAccessDeniedSound()
+            soundCoordinator.playAccessDeniedSound()
         } else {
-            playAccessGrantedSound()
+            soundCoordinator.playAccessGrantedSound()
         }
     }
     
     @IBAction func swipeForRideAccess(_ sender: AnyObject) {
         if entrantRideAccess.allRides == true && entrantRideAccess.skipLines == true {
             rideAccessLabel.text = "All rides, skip lines"
-            playAccessGrantedSound()
+            soundCoordinator.playAccessGrantedSound()
         }
         
         if entrantRideAccess.allRides == false && entrantRideAccess.skipLines == false {
             rideAccessLabel.text = "No ride access"
-            playAccessDeniedSound()
+            soundCoordinator.playAccessDeniedSound()
         }
         
         if entrantRideAccess.allRides == true && entrantRideAccess.skipLines == false {
             rideAccessLabel.text = "All rides, normal lines"
-            playAccessGrantedSound()
+            soundCoordinator.playAccessGrantedSound()
         }
     }
     
     @IBAction func swipeForDiscountAccess(_ sender: AnyObject) {
         
         if entrantDiscountAccess.merchandiseDiscount != 0 {
-            playAccessGrantedSound()
+            soundCoordinator.playAccessGrantedSound()
             merchandiseLabel.text = "Merchandise discount: \(String(entrantDiscountAccess.merchandiseDiscount))%"
         }
         
         if entrantDiscountAccess.foodDiscount != 0 {
-            playAccessGrantedSound()
+            soundCoordinator.playAccessGrantedSound()
             foodLabel.text = "Food discount: \(entrantDiscountAccess.foodDiscount)%"
         }
         
         else if entrantDiscountAccess.foodDiscount == 0 && entrantDiscountAccess.merchandiseDiscount == 0 {
-            playAccessDeniedSound()
+            soundCoordinator.playAccessDeniedSound()
             merchandiseLabel.text = "No discount on merchandise today"
             foodLabel.text = "No discount on food today"
         }
     }
     
-    //Sound Effects
-    
-    func loadAccessGrantedSound() {
-        let pathToFile = Bundle.main.path(forResource: "AccessGranted", ofType: "wav")
-        let soundURL = URL(fileURLWithPath: pathToFile!)
-        AudioServicesCreateSystemSoundID(soundURL as CFURL, &accessGrantedSound)
-    }
-    
-    func loadAccessDeniedSound() {
-        let pathToFile = Bundle.main.path(forResource: "AccessDenied", ofType: "wav")
-        let soundURL = URL(fileURLWithPath: pathToFile!)
-        AudioServicesCreateSystemSoundID(soundURL as CFURL, &accessDeniedSound)
-    }
-    
-    func playAccessGrantedSound() {
-        AudioServicesPlaySystemSound(accessGrantedSound)
-    }
-    
-    func playAccessDeniedSound() {
-        AudioServicesPlaySystemSound(accessDeniedSound)
-    }
 }
