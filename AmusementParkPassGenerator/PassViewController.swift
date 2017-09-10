@@ -83,51 +83,51 @@ class PassViewController: UIViewController {
         // Round Corners
         let buttonsArray = [AreaAccessTestButton, RideAccessTestButton, DiscountAccessTestButton, CreateNewPassButton]
         for button in buttonsArray {
-            button.layer.cornerRadius = 5
-            button.layer.masksToBounds = true
+            button?.layer.cornerRadius = 5
+            button?.layer.masksToBounds = true
         }
         
         let viewsArray = [passView, pictureView, testAreaView]
         for view in viewsArray {
-            view.layer.cornerRadius = 5
-            view.layer.masksToBounds = true
+            view?.layer.cornerRadius = 5
+            view?.layer.masksToBounds = true
         }
         
         passTypeLabel.text = passType
         dateLabel.text = date
     }
 
-    @IBAction func swipeForAreaAccess(sender: AnyObject) {
-        areaTestingStackView.hidden = false
+    @IBAction func swipeForAreaAccess(_ sender: AnyObject) {
+        areaTestingStackView.isHidden = false
         
         if entrantAreaAccess.amusementArea == true {
-            amusementParkLabel.backgroundColor = UIColor.greenColor()
+            amusementParkLabel.backgroundColor = UIColor.green
         } else {
-            amusementParkLabel.backgroundColor = UIColor.redColor()
+            amusementParkLabel.backgroundColor = UIColor.red
         }
         
         if entrantAreaAccess.kitchenAreas == true {
-           kitchenLabel.backgroundColor = UIColor.greenColor()
+           kitchenLabel.backgroundColor = UIColor.green
         } else {
-            kitchenLabel.backgroundColor = UIColor.redColor()
+            kitchenLabel.backgroundColor = UIColor.red
         }
         
         if entrantAreaAccess.maintenanceAreas == true {
-            maintenanceZonesLabel.backgroundColor = UIColor.greenColor()
+            maintenanceZonesLabel.backgroundColor = UIColor.green
         } else {
-            maintenanceZonesLabel.backgroundColor = UIColor.redColor()
+            maintenanceZonesLabel.backgroundColor = UIColor.red
         }
         
         if entrantAreaAccess.officeAreas == true {
-            officesLabel.backgroundColor = UIColor.greenColor()
+            officesLabel.backgroundColor = UIColor.green
         } else {
-            officesLabel.backgroundColor = UIColor.redColor()
+            officesLabel.backgroundColor = UIColor.red
         }
         
         if entrantAreaAccess.rideControlAreas == true {
-            rideControlLabel.backgroundColor = UIColor.greenColor()
+            rideControlLabel.backgroundColor = UIColor.green
         } else {
-            rideControlLabel.backgroundColor = UIColor.redColor()
+            rideControlLabel.backgroundColor = UIColor.red
         }
         
         if entrantAreaAccess.amusementArea == false && entrantAreaAccess.kitchenAreas == false && entrantAreaAccess.maintenanceAreas == false && entrantAreaAccess.officeAreas == false && entrantAreaAccess.rideControlAreas == false {
@@ -137,7 +137,7 @@ class PassViewController: UIViewController {
         }
     }
     
-    @IBAction func swipeForRideAccess(sender: AnyObject) {
+    @IBAction func swipeForRideAccess(_ sender: AnyObject) {
         if entrantRideAccess.allRides == true && entrantRideAccess.skipLines == true {
             rideAccessLabel.text = "All rides, skip lines"
             playAccessGrantedSound()
@@ -154,7 +154,7 @@ class PassViewController: UIViewController {
         }
     }
     
-    @IBAction func swipeForDiscountAccess(sender: AnyObject) {
+    @IBAction func swipeForDiscountAccess(_ sender: AnyObject) {
         
         if entrantDiscountAccess.merchandiseDiscount != 0 {
             playAccessGrantedSound()
@@ -176,15 +176,15 @@ class PassViewController: UIViewController {
     //Sound Effects
     
     func loadAccessGrantedSound() {
-        let pathToFile = NSBundle.mainBundle().pathForResource("AccessGranted", ofType: "wav")
-        let soundURL = NSURL(fileURLWithPath: pathToFile!)
-        AudioServicesCreateSystemSoundID(soundURL, &accessGrantedSound)
+        let pathToFile = Bundle.main.path(forResource: "AccessGranted", ofType: "wav")
+        let soundURL = URL(fileURLWithPath: pathToFile!)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &accessGrantedSound)
     }
     
     func loadAccessDeniedSound() {
-        let pathToFile = NSBundle.mainBundle().pathForResource("AccessDenied", ofType: "wav")
-        let soundURL = NSURL(fileURLWithPath: pathToFile!)
-        AudioServicesCreateSystemSoundID(soundURL, &accessDeniedSound)
+        let pathToFile = Bundle.main.path(forResource: "AccessDenied", ofType: "wav")
+        let soundURL = URL(fileURLWithPath: pathToFile!)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &accessDeniedSound)
     }
     
     func playAccessGrantedSound() {

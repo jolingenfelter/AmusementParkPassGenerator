@@ -126,7 +126,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func setupPickerViews() {
         companiesArray = [VendorType.ACME.rawValue, VendorType.Orkin.rawValue, VendorType.Fedex.rawValue, VendorType.NWElectrical.rawValue]
-        projectNumbersArray = [String(ContractEmployeeType.A.rawValue), String(ContractEmployeeType.B.rawValue), String(ContractEmployeeType.C.rawValue), String(ContractEmployeeType.D.rawValue), String(ContractEmployeeType.E.rawValue)]
+        projectNumbersArray = [String(ContractEmployeeType.a.rawValue), String(ContractEmployeeType.b.rawValue), String(ContractEmployeeType.c.rawValue), String(ContractEmployeeType.d.rawValue), String(ContractEmployeeType.e.rawValue)]
         
         companyPicker.delegate = self
         companyTextField.inputView = companyPicker
@@ -136,11 +136,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         var numberOfrows = 0
         
@@ -153,7 +153,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return numberOfrows
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         var title = String()
         
@@ -166,7 +166,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return title
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView == companyPicker {
             companyTextField.text = companiesArray[row]
@@ -193,7 +193,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // Select entrant type and subtype
     
-    @IBAction func entrantTypeSelected(sender: UIButton) {
+    @IBAction func entrantTypeSelected(_ sender: UIButton) {
         
         switch sender.tag {
         
@@ -215,18 +215,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             switchHighlight(contractorButton)
             setSecondRowButtons(contractorButton)
             enableTextFields(true)
-            companyTextField.enabled = false
-            companyTextField.backgroundColor = UIColor.clearColor()
+            companyTextField.isEnabled = false
+            companyTextField.backgroundColor = UIColor.clear
             resetTextFields()
         
         case 4:
             switchHighlight(vendorButton)
             setSecondRowButtons(vendorButton)
             enableTextFields(true)
-            projectNumberTextField.enabled = false
-            projectNumberTextField.backgroundColor = UIColor.clearColor()
-            SSNTextField.enabled = false
-            SSNTextField.backgroundColor = UIColor.clearColor()
+            projectNumberTextField.isEnabled = false
+            projectNumberTextField.backgroundColor = UIColor.clear
+            SSNTextField.isEnabled = false
+            SSNTextField.backgroundColor = UIColor.clear
             resetTextFields()
         
         default: break
@@ -234,7 +234,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    @IBAction func entrantSubtypeSelected(sender: UIButton) {
+    @IBAction func entrantSubtypeSelected(_ sender: UIButton) {
         
         if let title = sender.currentTitle {
             
@@ -298,22 +298,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func employeeSettings() {
         enableTextFields(true)
         
-        DOBTextField.enabled = true
-        SSNTextField.enabled = true
+        DOBTextField.isEnabled = true
+        SSNTextField.isEnabled = true
         
-        projectNumberTextField.enabled = false
-        projectNumberTextField.backgroundColor = UIColor.clearColor()
+        projectNumberTextField.isEnabled = false
+        projectNumberTextField.backgroundColor = UIColor.clear
         
-        firstNameTextField.enabled = true
-        lastNameTextField.enabled = true
+        firstNameTextField.isEnabled = true
+        lastNameTextField.isEnabled = true
         
-        companyTextField.enabled = false
-        companyTextField.backgroundColor = UIColor.clearColor()
+        companyTextField.isEnabled = false
+        companyTextField.backgroundColor = UIColor.clear
         
-        streetAddressTextField.enabled = true
-        cityTextField.enabled = true
-        stateTextField.enabled = true
-        zipCodeTextField.enabled = true
+        streetAddressTextField.isEnabled = true
+        cityTextField.isEnabled = true
+        stateTextField.isEnabled = true
+        zipCodeTextField.isEnabled = true
         
     }
     
@@ -322,56 +322,56 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func seasonPassSettings() {
         enableTextFields(true)
         
-        DOBTextField.enabled = false
-        DOBTextField.backgroundColor = UIColor.clearColor()
+        DOBTextField.isEnabled = false
+        DOBTextField.backgroundColor = UIColor.clear
         
-        SSNTextField.enabled = false
-        SSNTextField.backgroundColor = UIColor.clearColor()
+        SSNTextField.isEnabled = false
+        SSNTextField.backgroundColor = UIColor.clear
         
-        projectNumberTextField.enabled = false
-        projectNumberTextField.backgroundColor = UIColor.clearColor()
+        projectNumberTextField.isEnabled = false
+        projectNumberTextField.backgroundColor = UIColor.clear
         
-        firstNameTextField.enabled = true
-        lastNameTextField.enabled = true
+        firstNameTextField.isEnabled = true
+        lastNameTextField.isEnabled = true
         
-        companyTextField.enabled = false
-        companyTextField.backgroundColor = UIColor.clearColor()
+        companyTextField.isEnabled = false
+        companyTextField.backgroundColor = UIColor.clear
         
-        streetAddressTextField.enabled = true
-        cityTextField.enabled = true
-        stateTextField.enabled = true
-        zipCodeTextField.enabled = true
+        streetAddressTextField.isEnabled = true
+        cityTextField.isEnabled = true
+        stateTextField.isEnabled = true
+        zipCodeTextField.isEnabled = true
         
     }
     
     func seniorSettings() {
         enableTextFields(true)
         
-        DOBTextField.enabled = true
+        DOBTextField.isEnabled = true
         
-        SSNTextField.enabled = false
-        SSNTextField.backgroundColor = UIColor.clearColor()
+        SSNTextField.isEnabled = false
+        SSNTextField.backgroundColor = UIColor.clear
         
-        projectNumberTextField.enabled = false
-        projectNumberTextField.backgroundColor = UIColor.clearColor()
+        projectNumberTextField.isEnabled = false
+        projectNumberTextField.backgroundColor = UIColor.clear
         
-        firstNameTextField.enabled = true
-        lastNameTextField.enabled = true
+        firstNameTextField.isEnabled = true
+        lastNameTextField.isEnabled = true
         
-        companyTextField.enabled = false
-        companyTextField.backgroundColor = UIColor.clearColor()
+        companyTextField.isEnabled = false
+        companyTextField.backgroundColor = UIColor.clear
         
-        streetAddressTextField.enabled = false
-        streetAddressTextField.backgroundColor = UIColor.clearColor()
+        streetAddressTextField.isEnabled = false
+        streetAddressTextField.backgroundColor = UIColor.clear
         
-        cityTextField.enabled = false
-        cityTextField.backgroundColor = UIColor.clearColor()
+        cityTextField.isEnabled = false
+        cityTextField.backgroundColor = UIColor.clear
         
-        stateTextField.enabled = false
-        stateTextField.backgroundColor = UIColor.clearColor()
+        stateTextField.isEnabled = false
+        stateTextField.backgroundColor = UIColor.clear
         
-        zipCodeTextField.enabled = false
-        zipCodeTextField.backgroundColor = UIColor.clearColor()
+        zipCodeTextField.isEnabled = false
+        zipCodeTextField.backgroundColor = UIColor.clear
         
     }
     
@@ -379,22 +379,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         enableTextFields(true)
         for textField in textFieldArray {
             if textField != DOBTextField {
-                textField.enabled = false
-                textField.backgroundColor = UIColor.clearColor()
+                textField.isEnabled = false
+                textField.backgroundColor = UIColor.clear
             } else {
-                textField.enabled = true
+                textField.isEnabled = true
             }
         }
     }
     
-    func enableTextFields(isEnabled: Bool) {
+    func enableTextFields(_ isEnabled: Bool) {
         for textField in textFieldArray {
             if isEnabled == false {
-                textField.enabled = false
-                textField.backgroundColor = UIColor.clearColor()
+                textField.isEnabled = false
+                textField.backgroundColor = UIColor.clear
             } else {
-                textField.enabled = true
-                textField.backgroundColor = UIColor.whiteColor()
+                textField.isEnabled = true
+                textField.backgroundColor = UIColor.white
             }
         }
     }
@@ -402,50 +402,50 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // Button helper methods
     
-    func highlightSubtype(button: UIButton) {
+    func highlightSubtype(_ button: UIButton) {
         previouslySelectedSubType = currentlySelectedSubType
-        previouslySelectedSubType.selected = false
+        previouslySelectedSubType.isSelected = false
         currentlySelectedSubType = button
-        currentlySelectedSubType.selected = true
+        currentlySelectedSubType.isSelected = true
     }
     
-    func setSecondRowButtons(button: UIButton) {
+    func setSecondRowButtons(_ button: UIButton) {
         switch button {
             case guestButton :
-                r2b1.setTitle(GuestType.freeChild.rawValue, forState: .Normal)
-                r2b2.setTitle(GuestType.Classic.rawValue, forState: .Normal)
-                r2b3.setTitle(GuestType.seniorGuest.rawValue, forState: .Normal)
-                r2b4.setTitle(GuestType.seasonPass.rawValue, forState: .Normal)
-                r2b5.setTitle(GuestType.VIP.rawValue, forState: .Normal)
+                r2b1.setTitle(GuestType.freeChild.rawValue, for: UIControlState())
+                r2b2.setTitle(GuestType.Classic.rawValue, for: UIControlState())
+                r2b3.setTitle(GuestType.seniorGuest.rawValue, for: UIControlState())
+                r2b4.setTitle(GuestType.seasonPass.rawValue, for: UIControlState())
+                r2b5.setTitle(GuestType.VIP.rawValue, for: UIControlState())
                 
-                r2b5.hidden = false
+                r2b5.isHidden = false
                 secondRowButtonsStackView.addArrangedSubview(r2b5)
-                secondRowButtonsStackView.hidden = false
+                secondRowButtonsStackView.isHidden = false
             
             case employeeButton :
-                r2b1.setTitle(EmployeeType.FoodServices.rawValue, forState: .Normal)
-                r2b2.setTitle(EmployeeType.RideServices.rawValue, forState: .Normal)
-                r2b3.setTitle(EmployeeType.Maintenance.rawValue, forState: .Normal)
-                r2b4.setTitle(EmployeeType.Manager.rawValue, forState: .Normal)
+                r2b1.setTitle(EmployeeType.FoodServices.rawValue, for: UIControlState())
+                r2b2.setTitle(EmployeeType.RideServices.rawValue, for: UIControlState())
+                r2b3.setTitle(EmployeeType.Maintenance.rawValue, for: UIControlState())
+                r2b4.setTitle(EmployeeType.Manager.rawValue, for: UIControlState())
                 
-                r2b5.hidden = true
+                r2b5.isHidden = true
                 secondRowButtonsStackView.removeArrangedSubview(r2b5)
-                secondRowButtonsStackView.hidden = false
+                secondRowButtonsStackView.isHidden = false
             
             case contractorButton :
             
-                secondRowButtonsStackView.hidden = true
+                secondRowButtonsStackView.isHidden = true
             
             case vendorButton :
             
-                secondRowButtonsStackView.hidden = true
+                secondRowButtonsStackView.isHidden = true
         
             default: break
         }
     }
     
     
-    func switchHighlight(button: UIButton) {
+    func switchHighlight(_ button: UIButton) {
         previouslySelectedTypeButton = currentlySelectedTypeButton
         previouslySelectedTypeButton.backgroundColor = buttonNormalStatePurple
         currentlySelectedTypeButton = button
@@ -454,16 +454,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func deselectSubtype() {
         for button in secondRowButtonsArray {
-            if button.selected == true {
-                button.selected = false
+            if button.isSelected == true {
+                button.isSelected = false
             }
         }
     }
     
     // Generate Pass
-    @IBAction func GeneratePass(sender: AnyObject) {
+    @IBAction func GeneratePass(_ sender: AnyObject) {
         
-        today = dateFormatter.stringFromDate(NSDate())
+        today = dateFormatter.string(from: Date())
         
         
         if currentlySelectedTypeButton == guestButton {
@@ -527,7 +527,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // try pass
     
-    func tryPass(pass: PassGenerator) {
+    func tryPass(_ pass: PassGenerator) {
         
         do {
             
@@ -557,7 +557,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     }
     
-    @IBAction func PopulateData(sender: AnyObject) {
+    @IBAction func PopulateData(_ sender: AnyObject) {
         
         if currentlySelectedTypeButton == guestButton && currentlySelectedSubType == r2b1 {
             DOBTextField.text = "1/1/2015"
@@ -632,24 +632,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // Pass Generated VC
     
     func displayPassVC() {
-        let passVC = self.storyboard?.instantiateViewControllerWithIdentifier("PassViewController") as! PassViewController
+        let passVC = self.storyboard?.instantiateViewController(withIdentifier: "PassViewController") as! PassViewController
         passVC.date = today
         passVC.passType = entrantTypeString
         passVC.generatedPass = pass
         
-        self.presentViewController(passVC, animated: true, completion: nil)
+        self.present(passVC, animated: true, completion: nil)
     }
     
     // Helper Methods
     
-    func displayAlertWithTitle(title: String, andMessage message: String) {
+    func displayAlertWithTitle(_ title: String, andMessage message: String) {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         
         alert.addAction(okAction)
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func resetTextFields() {

@@ -10,35 +10,35 @@ import Foundation
 
 // Methods to check age and birthday
 
-var dateFormatter: NSDateFormatter {
-    let dateFormatter = NSDateFormatter()
+var dateFormatter: DateFormatter {
+    let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/dd/yyyy"
     return dateFormatter
 }
 
-func calculateAge(person: Person) throws -> Int {
+func calculateAge(_ person: Person) throws -> Int {
     
-    var ageComponents = NSDateComponents()
+    var ageComponents = DateComponents()
     
-    guard let birthday = person.DOB, let fromDate = dateFormatter.dateFromString(birthday) else {
+    guard let birthday = person.DOB, let fromDate = dateFormatter.date(from: birthday) else {
         throw PersonalInformationError.InvalidDOB
     }
     
-    let calendar = NSCalendar.currentCalendar()
+    let calendar = Calendar.current
         
-    ageComponents = calendar.components(NSCalendarUnit.Year, fromDate: fromDate, toDate: NSDate(), options: [])
+    ageComponents = (calendar as NSCalendar).components(NSCalendar.Unit.year, from: fromDate, to: Date(), options: [])
 
-    return ageComponents.year
+    return ageComponents.year!
     
 }
 
-func checkForBirthday(person: Person) {
+func checkForBirthday(_ person: Person) {
     
     if let birthday = person.DOB {
-        let birthdayDate = dateFormatter.dateFromString(birthday)
-        let calendar = NSCalendar.currentCalendar()
-        let todayComponents = calendar.components([.Month, .Day], fromDate: NSDate())
-        let birthdayComponents = calendar.components([.Month, .Day], fromDate: birthdayDate!)
+        let birthdayDate = dateFormatter.date(from: birthday)
+        let calendar = Calendar.current
+        let todayComponents = (calendar as NSCalendar).components([.month, .day], from: Date())
+        let birthdayComponents = (calendar as NSCalendar).components([.month, .day], from: birthdayDate!)
         
         if todayComponents.month == birthdayComponents.month && todayComponents.day == birthdayComponents.day {
             print("Happy birthday!  Thanks for choosing us to spend your special day with!")

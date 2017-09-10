@@ -42,7 +42,7 @@ struct DiscountAccessType {
     var merchandiseDiscount: Double
 }
 
-enum PersonalInformationError: String, ErrorType {
+enum PersonalInformationError: String, Error {
     case InvalidName = "No valid name provided"
     case InvalidAddress = "No valid address provided"
     case InvalidCity = "No valid city provided"
@@ -131,23 +131,23 @@ enum VendorType: String, Entrant {
 
 enum ContractEmployeeType: Int, Entrant {
     
-    case A = 1001
-    case B = 1002
-    case C = 1003
-    case D = 2001
-    case E = 2002
+    case a = 1001
+    case b = 1002
+    case c = 1003
+    case d = 2001
+    case e = 2002
     
     func areaAccess() -> AreaAccessType {
         switch self {
-        case A:
+        case .a:
             return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: true, maintenanceAreas: false, officeAreas: false)
-        case B:
+        case .b:
             return AreaAccessType(amusementArea: true, kitchenAreas: false, rideControlAreas: true, maintenanceAreas: true, officeAreas: false)
-        case C:
+        case .c:
             return AreaAccessType(amusementArea: true, kitchenAreas: true, rideControlAreas: true, maintenanceAreas: true, officeAreas: true)
-        case D:
+        case .d:
             return AreaAccessType(amusementArea: false, kitchenAreas: false, rideControlAreas: false, maintenanceAreas: false, officeAreas: true)
-        case E:
+        case .e:
             return AreaAccessType(amusementArea: false, kitchenAreas: true, rideControlAreas: false, maintenanceAreas: true, officeAreas: false)
         }
     }
