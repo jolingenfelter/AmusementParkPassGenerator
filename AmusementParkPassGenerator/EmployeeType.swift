@@ -9,6 +9,7 @@
 import Foundation
 
 enum EmployeeType: String, Entrant {
+    
     case FoodServices = "Food Services"
     case RideServices = "Ride Services"
     case Maintenance = "Maintenance"

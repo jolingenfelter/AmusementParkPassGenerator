@@ -29,6 +29,7 @@
 		9EF77D051F65865500726134 /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D041F65865500726134 /* VendorType.swift */; };
 		9EF77D071F65867200726134 /* ContractEmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D061F65867200726134 /* ContractEmployeeType.swift */; };
 		9EF77D0C1F65887E00726134 /* SoundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D0B1F65887E00726134 /* SoundCoordinator.swift */; };
+		9EF77D0E1F658BD300726134 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D0D1F658BD300726134 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		9EF77D041F65865500726134 /* VendorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorType.swift; sourceTree = "<group>"; };
 		9EF77D061F65867200726134 /* ContractEmployeeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractEmployeeType.swift; sourceTree = "<group>"; };
 		9EF77D0B1F65887E00726134 /* SoundCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCoordinator.swift; sourceTree = "<group>"; };
+		9EF77D0D1F658BD300726134 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF77CF31F6584D300726134 /* ArrayExtension.swift */,
+				9EF77D0D1F658BD300726134 /* ViewControllerExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				9E04F3311D68F60000C2F241 /* AgeAndBirthday.swift in Sources */,
 				9E014B3C1D64C68B000ED26B /* PassGenerator.swift in Sources */,
+				9EF77D0E1F658BD300726134 /* ViewControllerExtension.swift in Sources */,
 				9E950B351D6357BE001A3C3E /* ViewController.swift in Sources */,
 				9EF77CFF1F6585E300726134 /* RideAccessType.swift in Sources */,
 				9E97DFF71D7C8858007D15E7 /* PassViewController.swift in Sources */,

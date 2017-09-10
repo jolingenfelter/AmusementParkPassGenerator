@@ -10,6 +10,7 @@ import Foundation
 
 
 enum GuestType: String, Entrant {
+    
     case Classic = "Classic"
     case VIP = "VIP"
     case freeChild = "Child"

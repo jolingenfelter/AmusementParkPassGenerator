@@ -17,5 +17,4 @@ enum PersonalInformationError: String, Error {
     case InvalidSSN = "Invalid social security number"
     case InvalidDOB = "Invalid date of birth"
     case InvalidEntrantType = "Invalid Entrant Type"
-    
 }

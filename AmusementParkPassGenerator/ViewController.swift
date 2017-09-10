@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController {
     
     // Buttons
     
@@ -73,12 +73,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var today = String()
     
-    init(blankPass: PassGenerator) {
-        self.pass = blankPass
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     
     required init?(coder aDecoder: NSCoder) {
         let person = Person(firstName: nil, lastName: nil, address: nil, city: nil, state: nil, zipCode: nil, SSN: nil, DOB: nil, dateOfVisit: nil)
@@ -107,59 +101,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Initial Setup
         self.initialViewSetup()
         self.setupPickerViews()
-    }
-    
-    // PickerViews
-    
-    func setupPickerViews() {
-        companiesArray = [VendorType.ACME.rawValue, VendorType.Orkin.rawValue, VendorType.Fedex.rawValue, VendorType.NWElectrical.rawValue]
-        projectNumbersArray = [String(ContractEmployeeType.a.rawValue), String(ContractEmployeeType.b.rawValue), String(ContractEmployeeType.c.rawValue), String(ContractEmployeeType.d.rawValue), String(ContractEmployeeType.e.rawValue)]
-        
-        companyPicker.delegate = self
-        companyTextField.inputView = companyPicker
-        
-        projectNumberPicker.delegate = self
-        projectNumberTextField.inputView = projectNumberPicker
-
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        var numberOfrows = 0
-        
-        if pickerView == companyPicker {
-            numberOfrows = companiesArray.count
-        } else if pickerView == projectNumberPicker {
-            numberOfrows = projectNumbersArray.count
-        }
-        
-        return numberOfrows
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        var title = String()
-        
-        if pickerView == companyPicker {
-            title = companiesArray[row]
-        } else if pickerView == projectNumberPicker {
-            title = projectNumbersArray[row]
-        }
-        
-        return title
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if pickerView == companyPicker {
-            companyTextField.text = companiesArray[row]
-        } else if pickerView == projectNumberPicker {
-            projectNumberTextField.text = projectNumbersArray[row]
-        }
     }
     
     func initialViewSetup() {
@@ -629,21 +570,69 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // Helper Methods
     
-    func displayAlertWithTitle(_ title: String, andMessage message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        alert.addAction(okAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
     func resetTextFields() {
         for textField in textFieldArray {
                 textField.text = nil
         }
     }
 
+}
+
+// PickerView
+
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func setupPickerViews() {
+        companiesArray = [VendorType.ACME.rawValue, VendorType.Orkin.rawValue, VendorType.Fedex.rawValue, VendorType.NWElectrical.rawValue]
+        projectNumbersArray = [String(ContractEmployeeType.a.rawValue), String(ContractEmployeeType.b.rawValue), String(ContractEmployeeType.c.rawValue), String(ContractEmployeeType.d.rawValue), String(ContractEmployeeType.e.rawValue)]
+        
+        companyPicker.delegate = self
+        companyTextField.inputView = companyPicker
+        
+        projectNumberPicker.delegate = self
+        projectNumberTextField.inputView = projectNumberPicker
+        
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        var numberOfrows = 0
+        
+        if pickerView == companyPicker {
+            numberOfrows = companiesArray.count
+        } else if pickerView == projectNumberPicker {
+            numberOfrows = projectNumbersArray.count
+        }
+        
+        return numberOfrows
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        var title = String()
+        
+        if pickerView == companyPicker {
+            title = companiesArray[row]
+        } else if pickerView == projectNumberPicker {
+            title = projectNumbersArray[row]
+        }
+        
+        return title
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if pickerView == companyPicker {
+            companyTextField.text = companiesArray[row]
+        } else if pickerView == projectNumberPicker {
+            projectNumberTextField.text = projectNumbersArray[row]
+        }
+    }
+
+    
 }
 

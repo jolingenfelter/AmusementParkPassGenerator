@@ -18,5 +18,4 @@ struct Person {
     var SSN: Int?
     var DOB: String?
     var dateOfVisit: String?
-    
 }
