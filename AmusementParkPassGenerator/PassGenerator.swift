@@ -50,10 +50,7 @@ class PassGenerator {
             if entrantAge < 65 {
                 self.entrantType = GuestType.classic
             }
-        
-        case GuestType.classic, GuestType.VIP:
-            print("No information necessary")
-        
+            
         case is EmployeeType, is ContractEmployeeType:
             guard self.entrant.DOB != nil else {
                 throw PersonalInformationError.InvalidDOB

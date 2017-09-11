@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Entrant: AreaAccess, DiscountAccess, RideAccess {
-    
+    static var entrantType: String { get }
 }
 
 protocol AreaAccess {

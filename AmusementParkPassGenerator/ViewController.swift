@@ -387,9 +387,9 @@ class ViewController: UIViewController {
         
         entrant = Person(firstName: firstName, lastName: lastName, address: address, city: city, state: state, zipCode: Int(zipCode!), SSN: Int(SSN!), DOB: DOB, dateOfVisit: today)
         
-        
-        if selectedType == GuestType.entrantType {
-            
+        switch selectedType {
+         
+        case GuestType.entrantType:
             guard let guestType = GuestType(rawValue: selectedSubType) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
                 return
@@ -398,12 +398,8 @@ class ViewController: UIViewController {
             entrantTypeString = String(guestType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: guestType)
             tryPass(pass)
-            
-        }
         
-        
-        if selectedType == EmployeeType.entrantType {
-            
+        case EmployeeType.entrantType:
             guard let employeeType = EmployeeType(rawValue: selectedSubType) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
                 return
@@ -412,10 +408,8 @@ class ViewController: UIViewController {
             entrantTypeString = String(employeeType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: employeeType)
             tryPass(pass)
-        }
         
-        if selectedType == VendorType.entrantType {
-
+        case VendorType.entrantType:
             guard let company = companyTextField.text, let vendorType = VendorType(rawValue: company) else {
                 displayAlertWithTitle("Error", andMessage: "Invalid Company")
                 return
@@ -424,10 +418,8 @@ class ViewController: UIViewController {
             entrantTypeString = String(vendorType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: vendorType)
             tryPass(pass)
-
-        }
-        
-        if selectedType == ContractEmployeeType.entrantType {
+            
+        case ContractEmployeeType.entrantType:
             
             guard let projectNumber = projectNumberTextField.text, let contractEmployeeType = ContractEmployeeType(rawValue: projectNumber) else {
                 displayAlertWithTitle("Error", andMessage: "Invalid Project Number")
@@ -437,7 +429,9 @@ class ViewController: UIViewController {
             entrantTypeString = String(contractEmployeeType.rawValue)
             pass = PassGenerator(entrant: entrant, entrantType: contractEmployeeType)
             tryPass(pass)
-          
+        
+        default: break
+            
         }
         
     }
