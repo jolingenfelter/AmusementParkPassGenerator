@@ -16,8 +16,8 @@ enum ContractEmployeeType: String, Entrant {
     case d = "2001"
     case e = "2002"
     
-    static var entrantType: EntrantType {
-        return EntrantType.contractEmployee
+    static var entrantType: String {
+        return "\(ContractEmployeeType.self)"
     }
     
     func areaAccess() -> AreaAccessType {

@@ -17,8 +17,8 @@ enum GuestType: String, Entrant {
     case seasonPass = "Season Pass"
     case seniorGuest = "Senior"
     
-    static var entrantType: EntrantType {
-        return EntrantType.guest
+    static var entrantType: String {
+        return "\(GuestType.self)"
     }
     
     func areaAccess() -> AreaAccessType {

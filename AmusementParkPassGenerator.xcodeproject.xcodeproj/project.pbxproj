@@ -30,7 +30,6 @@
 		9EF77D071F65867200726134 /* ContractEmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D061F65867200726134 /* ContractEmployeeType.swift */; };
 		9EF77D0C1F65887E00726134 /* SoundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D0B1F65887E00726134 /* SoundCoordinator.swift */; };
 		9EF77D0E1F658BD300726134 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D0D1F658BD300726134 /* ViewControllerExtension.swift */; };
-		9EF77D121F658E6700726134 /* EntrantType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF77D111F658E6700726134 /* EntrantType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +58,6 @@
 		9EF77D061F65867200726134 /* ContractEmployeeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractEmployeeType.swift; sourceTree = "<group>"; };
 		9EF77D0B1F65887E00726134 /* SoundCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCoordinator.swift; sourceTree = "<group>"; };
 		9EF77D0D1F658BD300726134 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
-		9EF77D111F658E6700726134 /* EntrantType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrantType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +119,6 @@
 		9EF77CF51F6584FC00726134 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9EF77D111F658E6700726134 /* EntrantType.swift */,
 				9EF77CFA1F65855E00726134 /* EntrantProtocols.swift */,
 				9EF77CFC1F65858C00726134 /* AccessType.swift */,
 				9EF77D001F65860E00726134 /* DiscountAccessType.swift */,
@@ -228,7 +225,6 @@
 				9EF77D071F65867200726134 /* ContractEmployeeType.swift in Sources */,
 				9EF77CFD1F65858C00726134 /* AccessType.swift in Sources */,
 				9EF77D031F65862700726134 /* Person.swift in Sources */,
-				9EF77D121F658E6700726134 /* EntrantType.swift in Sources */,
 				9EF77D051F65865500726134 /* VendorType.swift in Sources */,
 				9EF77D011F65860E00726134 /* DiscountAccessType.swift in Sources */,
 				9EF77CF91F65853200726134 /* EmployeeType.swift in Sources */,

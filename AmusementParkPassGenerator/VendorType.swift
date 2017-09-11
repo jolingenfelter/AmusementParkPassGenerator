@@ -15,8 +15,8 @@ enum VendorType: String, Entrant {
     case Fedex = "Fedex"
     case NWElectrical = "NW Electrical"
     
-    static var entrantType: EntrantType {
-        return EntrantType.vendor
+    static var entrantType: String {
+        return "\(VendorType.self)"
     }
     
     func areaAccess() -> AreaAccessType {

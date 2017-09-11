@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     var currentlySelectedTypeButton = UIButton()
     var previouslySelectedTypeButton = UIButton()
     
-    var selectedType: EntrantType
+    var selectedType: String
     
     var buttonPressedPurple = UIColor()
     var buttonNormalStatePurple = UIColor()
@@ -194,27 +194,27 @@ class ViewController: UIViewController {
             switchHighlight(guestButton)
             setSecondRowButtons(guestButton)
             enableTextFields(false)
-            selectedType = EntrantType.guest
+            selectedType = GuestType.entrantType
             deselectSubtype()
     
         case 2:
             switchHighlight(employeeButton)
             setSecondRowButtons(employeeButton)
             enableTextFields(false)
-            selectedType = EntrantType.employee
+            selectedType = EmployeeType.entrantType
             deselectSubtype()
         
         case 3:
             switchHighlight(contractorButton)
             setSecondRowButtons(contractorButton)
-            selectedType = EntrantType.contractEmployee
+            selectedType = ContractEmployeeType.entrantType
             person = ContractEmployeeType.testCase
             set(textField: projectNumberTextField, enabled: true)
         
         case 4:
             switchHighlight(vendorButton)
             setSecondRowButtons(vendorButton)
-            selectedType = EntrantType.vendor
+            selectedType = VendorType.entrantType
             person = VendorType.testCase
             set(textField: companyTextField, enabled: true)
         
@@ -388,7 +388,7 @@ class ViewController: UIViewController {
         entrant = Person(firstName: firstName, lastName: lastName, address: address, city: city, state: state, zipCode: Int(zipCode!), SSN: Int(SSN!), DOB: DOB, dateOfVisit: today)
         
         
-        if selectedType == EntrantType.guest {
+        if selectedType == GuestType.entrantType {
             
             guard let guestType = GuestType(rawValue: selectedSubType) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
@@ -402,7 +402,7 @@ class ViewController: UIViewController {
         }
         
         
-        if selectedType == EntrantType.employee {
+        if selectedType == EmployeeType.entrantType {
             
             guard let employeeType = EmployeeType(rawValue: selectedSubType) else {
                 displayAlertWithTitle("Error", andMessage: "Please choose a subtype")
@@ -414,7 +414,7 @@ class ViewController: UIViewController {
             tryPass(pass)
         }
         
-        if selectedType == EntrantType.vendor {
+        if selectedType == VendorType.entrantType {
 
             guard let company = companyTextField.text, let vendorType = VendorType(rawValue: company) else {
                 displayAlertWithTitle("Error", andMessage: "Invalid Company")
@@ -427,7 +427,7 @@ class ViewController: UIViewController {
 
         }
         
-        if selectedType == EntrantType.contractEmployee {
+        if selectedType == ContractEmployeeType.entrantType {
             
             guard let projectNumber = projectNumberTextField.text, let contractEmployeeType = ContractEmployeeType(rawValue: projectNumber) else {
                 displayAlertWithTitle("Error", andMessage: "Invalid Project Number")
