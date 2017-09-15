@@ -76,6 +76,8 @@ class PassViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         // Round Corners
         let buttonsArray = [AreaAccessTestButton, RideAccessTestButton, DiscountAccessTestButton, CreateNewPassButton]
         for button in buttonsArray {
